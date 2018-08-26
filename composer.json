@@ -1,9 +1,11 @@
 {
     "name": "mattmangoni/nova-blogify-tool",
-    "description": "A Laravel Nova tool.",
+    "description": "Create a simple blogging system inside Laravel Nova in one click",
     "keywords": [
         "laravel",
-        "nova"
+        "nova",
+        "bloggin",
+        "generator"
     ],
     "license": "MIT",
     "require": {
