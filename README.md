@@ -9,11 +9,12 @@ It currently features Category and Post resources, complete with a migration and
 
 In the future I plan to add `tags` and other custom fields as well.
 
-## Our Next Steps
+#### Our Next Steps
 
 * Make the entire content configurable
 * Enhance post resource and migration
 * Add tag system
+
 
  ## Installation
 
