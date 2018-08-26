@@ -23,7 +23,7 @@ Next, you must register the card with Nova. This is typically done in the `tools
 // in app/Providers/NovaServiceProvder.php
 
 // ...
-public function cards()
+public function tools()
 {
     return [
         // ...
