@@ -31,3 +31,26 @@ public function tools()
         new \Mattmangoni\NovaBlogifyTool\NovaBlogifyTool()
 }
 ```
+
+# How to use the posts and acategories in your applications
+
+```php
+
+use Mattmangoni\NovaBlogifyTool\Models\Post;
+use Mattmangoni\NovaBlogifyTool\Models\Category;
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/posts', function () {
+    //return view('welcome');
+
+    return Post::all();
+});
+
+Route::get('/posts', function () {
+    //return view('welcome');
+
+    return Category::all();
+});
