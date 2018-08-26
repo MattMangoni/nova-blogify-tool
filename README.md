@@ -1,4 +1,4 @@
-# Nova Recent Posts Card
+# Nova Blogify Tool
 
 [![Latest Stable Version](https://poser.pugx.org/mattmangoni/nova-blogify-tool/v/stable)](https://packagist.org/packages/mattmangoni/nova-blogify-tool) [![Total Downloads](https://poser.pugx.org/mattmangoni/nova-blogify-tool/downloads)](https://packagist.org/packages/mattmangoni/nova-blogify-tool)
 
@@ -27,7 +27,7 @@ public function cards()
 {
     return [
         // ...
-        
+
         new \Mattmangoni\NovaBlogifyTool\NovaBlogifyTool()
 }
 ```
