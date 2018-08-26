@@ -9,6 +9,12 @@ It currently features Category and Post resources, complete with a migration and
 
 In the future I plan to add `tags` and other custom fields as well.
 
+## Our Next Steps
+
+* Make the entire content configurable
+* Enhance post resource and migration
+* Add tag system
+
  ## Installation
 
 You can install the package in to a Laravel app that uses [Nova](https://nova.laravel.com) via composer:
@@ -32,7 +38,7 @@ public function tools()
 }
 ```
 
-# How to use the posts and acategories in your applications
+## How to use the posts and acategories in your applications
 
 ```php
 
@@ -50,3 +56,4 @@ Route::get('/posts', function () {
 Route::get('/posts', function () {
     return Category::all();
 });
+```
