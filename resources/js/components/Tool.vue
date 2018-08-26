@@ -58,11 +58,7 @@ export default {
         install () {
             Nova.request().get("/nova-vendor/nova-blogify-tool/migrate-tables")
                 .then(response => this.messages = response.data.messages)
-                .then(() => {
-                     setTimeout(() => {
-                        window.location.reload()
-                    }, 1000)
-                })
+                .then(() => this.reloadPage())
                 .then(() => this.installationCheck())
                 .catch(error => this.error = true)
         },
@@ -85,16 +81,18 @@ export default {
 
             Nova.request().get("/nova-vendor/nova-blogify-tool/uninstall")
                 .then(response => this.messages = response.data.messages)
-                .then(() => {
-                     setTimeout(() => {
-                        window.location.reload()
-                    }, 1000)
-                })
+                .then(() => this.reloadPage())
                 .catch(error => this.error = true)
         },
 
         resetMessages () {
             this.messages = []
+        },
+
+        reloadPage () {
+           setTimeout(() => {
+                window.location.reload()
+            }, 1000)
         }
     }
 }
