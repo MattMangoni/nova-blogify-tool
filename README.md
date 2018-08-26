@@ -44,13 +44,9 @@ Route::get('/', function () {
 });
 
 Route::get('/posts', function () {
-    //return view('welcome');
-
     return Post::all();
 });
 
 Route::get('/posts', function () {
-    //return view('welcome');
-
     return Category::all();
 });
