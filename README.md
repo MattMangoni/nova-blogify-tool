@@ -39,7 +39,7 @@ public function tools()
 }
 ```
 
-## How to use the posts and acategories in your applications
+## How to use the blog content in your applications
 
 ```php
 
