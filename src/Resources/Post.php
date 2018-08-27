@@ -48,9 +48,13 @@ class Post extends Resource
         return [
             ID::make()->sortable(),
 
-            BelongsTo::make('Author', 'author', User::class)->sortable(),
+            BelongsTo::make('Author', 'author', User::class)
+                ->sortable()
+                ->rules('required'),
 
-            BelongsTo::make('Category', 'category', Category::class)->sortable(),
+            BelongsTo::make('Category', 'category', Category::class)
+                ->sortable()
+                ->rules('required'),
 
             Text::make('Title')->sortable()->rules('required'),
 

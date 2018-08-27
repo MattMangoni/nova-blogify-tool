@@ -47,7 +47,9 @@ class Category extends Resource
         return [
             ID::make()->sortable(),
 
-            Text::make('Name'),
+            Text::make('Name')
+                ->sortable()
+                ->rules('required'),
 
             Trix::make('Description'),
 
