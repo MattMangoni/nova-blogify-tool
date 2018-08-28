@@ -4,10 +4,10 @@ namespace Mattmangoni\NovaBlogifyTool\Resources;
 
 use App\Nova\User;
 use App\Nova\Resource;
-use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
@@ -34,10 +34,11 @@ class Post extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'title', 'body'
+        'id', 'title', 'body',
     ];
 
     public static $displayInNavigation = false;
+
     /**
      * Get the fields displayed by the resource.
      *
@@ -65,7 +66,7 @@ class Post extends Resource
 
             Text::make('Title')->sortable()->rules('required'),
 
-            Markdown::make('Body')->rules('required')
+            Markdown::make('Body')->rules('required'),
         ];
     }
 

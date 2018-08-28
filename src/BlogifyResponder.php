@@ -36,7 +36,7 @@ class BlogifyResponder
         return "Unable to reset '{$tableName}' table.";
     }
 
-        ////////////////
+    ////////////////
 
     public static function deleteTableNotFound($tableName) : string
     {

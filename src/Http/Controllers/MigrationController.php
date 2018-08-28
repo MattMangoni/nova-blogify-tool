@@ -2,10 +2,8 @@
 
 namespace Mattmangoni\NovaBlogifyTool\Http\Controllers;
 
-use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Schema;
 use Mattmangoni\NovaBlogifyTool\BlogifyResponder;
-use Mattmangoni\NovaBlogifyTool\Http\Controllers\BlogifyBaseController;
 
 class MigrationController extends BlogifyBaseController
 {

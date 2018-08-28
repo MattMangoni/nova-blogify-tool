@@ -4,10 +4,10 @@ namespace Mattmangoni\NovaBlogifyTool\Bootstrap;
 
 use Laravel\Nova\Nova;
 use Illuminate\Support\Facades\Schema;
-use Mattmangoni\NovaBlogifyTool\Resources\Post;
-use Mattmangoni\NovaBlogifyTool\Resources\Category;
-use Mattmangoni\NovaBlogifyTool\Resources\Comment;
 use Mattmangoni\NovaBlogifyTool\Resources\Tag;
+use Mattmangoni\NovaBlogifyTool\Resources\Post;
+use Mattmangoni\NovaBlogifyTool\Resources\Comment;
+use Mattmangoni\NovaBlogifyTool\Resources\Category;
 
 class Blogify
 {
@@ -18,7 +18,7 @@ class Blogify
 
     public static function injectToolResources()
     {
-        if (!self::isInstalled()) {
+        if (! self::isInstalled()) {
             return;
         }
 
@@ -26,7 +26,7 @@ class Blogify
             Category::class,
             Post::class,
             Comment::class,
-            Tag::class
+            Tag::class,
         ]);
     }
 }
