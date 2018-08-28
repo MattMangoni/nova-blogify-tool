@@ -6,10 +6,8 @@ use App\Nova\Resource;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Fields\HasMany;
-use Laravel\Nova\Http\Requests\NovaRequest;
-use Mattmangoni\NovaBlogifyTool\Resources\Post;
+use Laravel\Nova\Fields\Markdown;
 
 class Category extends Resource
 {
@@ -51,7 +49,7 @@ class Category extends Resource
                 ->sortable()
                 ->rules('required'),
 
-            Trix::make('Description'),
+            Markdown::make('Description'),
 
             HasMany::make('Posts', 'posts', Post::class)
         ];

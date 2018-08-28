@@ -7,10 +7,8 @@ use App\Nova\Resource;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Trix;
+use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Http\Requests\NovaRequest;
-use Mattmangoni\NovaBlogifyTool\Resources\Category;
 
 class Post extends Resource
 {
@@ -58,7 +56,7 @@ class Post extends Resource
 
             Text::make('Title')->sortable()->rules('required'),
 
-            Trix::make('Body')->rules('required')
+            Markdown::make('Body')->rules('required')
         ];
     }
 
