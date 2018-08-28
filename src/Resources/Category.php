@@ -34,6 +34,7 @@ class Category extends Resource
         'id', 'name', 'description'
     ];
 
+    public static $displayInNavigation = false;
     /**
      * Get the fields displayed by the resource.
      *
