@@ -8,7 +8,7 @@ use Mattmangoni\NovaBlogifyTool\Migrations\Migrator;
 class BlogifyBaseController
 {
     /**
-     * Migrations list
+     * Migrations list.
      *
      * @var array
      */
@@ -30,7 +30,7 @@ class BlogifyBaseController
     }
 
     /**
-     * Undocumented function
+     * Undocumented function.
      *
      * @return \Illuminate\Http\JsonResponse
      */
