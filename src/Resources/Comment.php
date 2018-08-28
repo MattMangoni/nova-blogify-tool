@@ -2,15 +2,12 @@
 
 namespace Mattmangoni\NovaBlogifyTool\Resources;
 
-use App\Nova\User;
 use App\Nova\Resource;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Http\Requests\NovaRequest;
-use Mattmangoni\NovaBlogifyTool\Resources\Category;
+use Laravel\Nova\Fields\Markdown;
 
 class Comment extends Resource
 {
@@ -26,7 +23,7 @@ class Comment extends Resource
      *
      * @var string
      */
-    public static $title = 'author_id';
+    public static $title = 'title';
 
     /**
      * The columns that should be searched.
@@ -34,7 +31,7 @@ class Comment extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'content'
+        'id', 'title', 'body'
     ];
 
     /**
@@ -56,9 +53,7 @@ class Comment extends Resource
                 ->sortable()
                 ->rules('required'),
 
-            Text::make('Title')->sortable()->rules('required'),
-
-            Trix::make('Body')->rules('required')
+            Markdown::make('Body')->rules('required')
         ];
     }
 

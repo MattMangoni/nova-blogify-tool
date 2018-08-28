@@ -2,8 +2,8 @@
 
 namespace Mattmangoni\NovaBlogifyTool\Models;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
-use Mattmangoni\NovaBlogifyTool\Models\Category;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Comment extends Model
@@ -13,4 +13,8 @@ class Comment extends Model
         return $this->belongsTo(Post::class);
     }
 
+    public function author() : BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 }

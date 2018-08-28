@@ -12,8 +12,10 @@ class TagMigration
         Schema::create('tags', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
+
         Schema::create('post_tag', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('post_id');

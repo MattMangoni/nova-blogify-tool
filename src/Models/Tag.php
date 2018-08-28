@@ -3,7 +3,6 @@
 namespace Mattmangoni\NovaBlogifyTool\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Mattmangoni\NovaBlogifyTool\Models\Category;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Tag extends Model
@@ -12,6 +11,4 @@ class Tag extends Model
     {
         return $this->belongsToMany(Post::class);
     }
-
-
 }

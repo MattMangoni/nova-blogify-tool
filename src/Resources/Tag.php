@@ -2,15 +2,12 @@
 
 namespace Mattmangoni\NovaBlogifyTool\Resources;
 
-use App\Nova\User;
 use App\Nova\Resource;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Http\Requests\NovaRequest;
-use Mattmangoni\NovaBlogifyTool\Resources\Category;
+use Laravel\Nova\Fields\Markdown;
 
 class Tag extends Resource
 {
@@ -48,17 +45,9 @@ class Tag extends Resource
         return [
             ID::make()->sortable(),
 
-            BelongsTo::make('Author', 'author', User::class)
-                ->sortable()
-                ->rules('required'),
+            Text::make('Name')->sortable()->rules('required'),
 
-            BelongsTo::make('Blog Post', 'post', Post::class)
-                ->sortable()
-                ->rules('required'),
-
-            Text::make('Title')->sortable()->rules('required'),
-
-            Trix::make('Body')->rules('required')
+            Markdown::make('Description')
         ];
     }
 

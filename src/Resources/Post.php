@@ -4,6 +4,7 @@ namespace Mattmangoni\NovaBlogifyTool\Resources;
 
 use App\Nova\User;
 use App\Nova\Resource;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
@@ -51,6 +52,10 @@ class Post extends Resource
                 ->rules('required'),
 
             BelongsTo::make('Category', 'category', Category::class)
+                ->sortable()
+                ->rules('required'),
+
+            HasMany::make('Comments', 'comments', Comment::class)
                 ->sortable()
                 ->rules('required'),
 
