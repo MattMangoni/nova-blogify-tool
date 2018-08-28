@@ -1,6 +1,8 @@
 # Nova Blogify Tool
 
-[![Latest Stable Version](https://poser.pugx.org/mattmangoni/nova-blogify-tool/v/stable)](https://packagist.org/packages/mattmangoni/nova-blogify-tool) [![Total Downloads](https://poser.pugx.org/mattmangoni/nova-blogify-tool/downloads)](https://packagist.org/packages/mattmangoni/nova-blogify-tool) [![StyleCI](https://github.styleci.io/repos/146213757/shield?branch=master)](https://github.styleci.io/repos/146213757)
+[![Latest Stable Version](https://poser.pugx.org/mattmangoni/nova-blogify-tool/v/stable)](https://packagist.org/packages/mattmangoni/nova-blogify-tool) 
+[![Total Downloads](https://poser.pugx.org/mattmangoni/nova-blogify-tool/downloads)](https://packagist.org/packages/mattmangoni/nova-blogify-tool) 
+[![StyleCI](https://github.styleci.io/repos/146213757/shield?branch=master)](https://github.styleci.io/repos/146213757)
 
 ## Description
 
