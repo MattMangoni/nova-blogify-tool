@@ -34,7 +34,13 @@ class Comment extends Resource
         'id', 'title', 'body'
     ];
 
+    /**
+     * Hide the resource from the default navigation menu
+     *
+     * @var bool
+     */
     public static $displayInNavigation = false;
+
     /**
      * Get the fields displayed by the resource.
      *
