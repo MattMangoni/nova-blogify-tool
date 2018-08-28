@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\BelongsToMany;
 
 class Post extends Resource
 {
@@ -58,6 +59,8 @@ class Post extends Resource
             HasMany::make('Comments', 'comments', Comment::class)
                 ->sortable()
                 ->rules('required'),
+
+            BelongsToMany::make('Tags', 'tags', Tag::class),
 
             Text::make('Title')->sortable()->rules('required'),
 

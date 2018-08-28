@@ -35,17 +35,6 @@ class Tag extends Resource
     ];
 
     /**
-     * Temporarily hide tags from resource menu.
-     *
-     * @param Request $request
-     * @return bool
-     */
-    public static function availableForNavigation(Request $request)
-    {
-        return false;
-    }
-
-    /**
      * Get the fields displayed by the resource.
      *
      * @param  \Illuminate\Http\Request  $request
