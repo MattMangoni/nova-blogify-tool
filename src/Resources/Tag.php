@@ -6,7 +6,6 @@ use App\Nova\Resource;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Markdown;
 
 class Tag extends Resource
@@ -31,10 +30,11 @@ class Tag extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'name'
+        'id', 'name',
     ];
 
     public static $displayInNavigation = false;
+
     /**
      * Get the fields displayed by the resource.
      *
@@ -48,7 +48,7 @@ class Tag extends Resource
 
             Text::make('Name')->sortable()->rules('required'),
 
-            Markdown::make('Description')
+            Markdown::make('Description'),
         ];
     }
 

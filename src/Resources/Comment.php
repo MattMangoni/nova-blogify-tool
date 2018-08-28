@@ -6,8 +6,8 @@ use App\Nova\User;
 use App\Nova\Resource;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Markdown;
+use Laravel\Nova\Fields\BelongsTo;
 
 class Comment extends Resource
 {
@@ -31,7 +31,7 @@ class Comment extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'title', 'body'
+        'id', 'title', 'body',
     ];
 
     /**
@@ -60,7 +60,7 @@ class Comment extends Resource
                 ->sortable()
                 ->rules('required'),
 
-            Markdown::make('Body')->rules('required')
+            Markdown::make('Body')->rules('required'),
         ];
     }
 

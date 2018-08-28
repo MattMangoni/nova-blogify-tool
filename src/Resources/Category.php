@@ -31,10 +31,11 @@ class Category extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'name', 'description'
+        'id', 'name', 'description',
     ];
 
     public static $displayInNavigation = false;
+
     /**
      * Get the fields displayed by the resource.
      *
@@ -52,7 +53,7 @@ class Category extends Resource
 
             Markdown::make('Description'),
 
-            HasMany::make('Posts', 'posts', Post::class)
+            HasMany::make('Posts', 'posts', Post::class),
         ];
     }
 

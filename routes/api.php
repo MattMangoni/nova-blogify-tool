@@ -2,9 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Schema;
 use Mattmangoni\NovaBlogifyTool\Bootstrap\Blogify;
-use Mattmangoni\NovaBlogifyTool\Migrations\Migrator;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +17,7 @@ use Mattmangoni\NovaBlogifyTool\Migrations\Migrator;
 
 Route::get('/check-migrations', function (Request $request) {
     return response()->json([
-        'installed' => Blogify::isInstalled()
+        'installed' => Blogify::isInstalled(),
     ], 200);
 });
 
