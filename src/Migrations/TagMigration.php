@@ -16,8 +16,8 @@ class TagMigration
         });
         Schema::create('post_tag', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('post_id')->unsigned();
-            $table->integer('tag_id')->unsigned();
+            $table->unsignedInteger('post_id');
+            $table->unsignedInteger('tag_id');
 
             $table->foreign('post_id')->references('id')->on('posts');
             $table->foreign('tag_id')->references('id')->on('tags');

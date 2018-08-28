@@ -11,8 +11,8 @@ class CommentMigration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('post_id')->unsigned();
-            $table->integer('author_id')->unsigned();
+            $table->unsignedInteger('post_id');
+            $table->unsignedInteger('author_id');
             $table->text('content');
             $table->timestamps();
 
