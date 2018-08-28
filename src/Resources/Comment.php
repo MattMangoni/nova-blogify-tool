@@ -34,6 +34,7 @@ class Comment extends Resource
         'id', 'title', 'body'
     ];
 
+    public static $displayInNavigation = false;
     /**
      * Get the fields displayed by the resource.
      *
