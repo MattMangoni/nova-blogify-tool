@@ -2,10 +2,10 @@
 
 namespace Mattmangoni\NovaBlogifyTool\Resources;
 
+use App\Nova\User;
 use App\Nova\Resource;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Markdown;
 
@@ -49,7 +49,7 @@ class Comment extends Resource
                 ->sortable()
                 ->rules('required'),
 
-            BelongsTo::make('Author', 'post', Post::class)
+            BelongsTo::make('Author', 'author', User::class)
                 ->sortable()
                 ->rules('required'),
 
