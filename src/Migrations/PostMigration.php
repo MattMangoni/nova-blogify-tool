@@ -21,7 +21,7 @@ class PostMigration
             $table->boolean('is_published')->default(false);
             $table->boolean('is_featured')->default(false);
             $table->timestamps();
-            $table->timestamp('published_at')->nullable();;
+            $table->timestamp('published_at')->nullable();
             $table->softDeletes();
 
             $table->foreign('user_id')->references('id')->on('users');
