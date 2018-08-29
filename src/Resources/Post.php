@@ -77,8 +77,6 @@ class Post extends Resource
                 ->sortable()
                 ->rules('required'),
 
-            BelongsToMany::make('Tags', 'tags', Tag::class),
-
             Text::make('Title')->sortable()->rules('required'),
 
             Text::make('Slug')
@@ -120,6 +118,8 @@ class Post extends Resource
                 ->sortable(),
             Boolean::make('Is Featured')
                 ->sortable(),
+
+            BelongsToMany::make('Tags', 'tags', Tag::class),
         ];
     }
 

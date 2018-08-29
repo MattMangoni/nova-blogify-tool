@@ -74,7 +74,7 @@ class Tag extends Resource
             Markdown::make('Description'),
 
             BelongsToMany::make('Posts'),
-            
+
         ];
     }
 
