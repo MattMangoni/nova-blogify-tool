@@ -27,9 +27,10 @@ class NewUsers extends Value
     public function ranges()
     {
         return [
-            30 => '30 Days',
-            60 => '60 Days',
-            365 => '365 Days',
+            1 => 'Since Yesterday',
+            7 => 'Since Last Week',
+            30 => 'Since Last Month',
+            90 => 'Since 3 Months Ago',
         ];
     }
 
@@ -40,7 +41,7 @@ class NewUsers extends Value
      */
     public function cacheFor()
     {
-        return now()->addMinutes(5);
+        return now()->addMinutes(10);
     }
 
     /**
