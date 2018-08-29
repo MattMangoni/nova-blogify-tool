@@ -35,7 +35,7 @@ class Comment extends Resource
     ];
 
     /**
-     * Hide the resource from the default navigation menu
+     * Hide the resource from the default navigation menu.
      *
      * @var bool
      */
