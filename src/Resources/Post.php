@@ -12,6 +12,8 @@ use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\Boolean;
+
 
 class Post extends Resource
 {
@@ -43,7 +45,7 @@ class Post extends Resource
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return array
      */
     public function fields(Request $request)
@@ -54,6 +56,19 @@ class Post extends Resource
             BelongsTo::make('Author', 'author', User::class)
                 ->sortable()
                 ->rules('required'),
+
+            Image::make('Image')
+                ->thumbnail(
+                    function () {
+                        return $this->image->link;
+                    }
+                )
+                ->hideWhenCreating()
+                ->hideWhenUpdating(),
+
+            BelongsTo::make('Image', 'image')
+                ->hideFromIndex()
+                ->hideFromDetail(),
 
             BelongsTo::make('Category', 'category', Category::class)
                 ->sortable()
@@ -67,14 +82,52 @@ class Post extends Resource
 
             Text::make('Title')->sortable()->rules('required'),
 
-            Markdown::make('Body')->rules('required'),
+            Text::make('Slug')
+                ->rules(
+                    [
+                        'required',
+                        'string',
+                    ]
+                )
+                ->creationRules(
+                    [
+                        'unique:posts,slug'
+                    ]
+                )
+                ->updateRules(
+                    [
+                        'unique:posts,slug,{{resourceId}}'
+                    ]
+                ),
+            Textarea::make('Summary')
+                ->rules(
+                    [
+                        'required',
+                        'string',
+                        'max:255'
+                    ]
+                )
+                ->hideFromIndex(),
+            Markdown::make('Body')
+                ->rules(
+                    [
+                        'required',
+                        'string'
+                    ]
+                )
+                ->hideFromIndex(),
+
+            Boolean::make('Is Published')
+                ->sortable(),
+            Boolean::make('Is Featured')
+                ->sortable(),
         ];
     }
 
     /**
      * Get the cards available for the request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return array
      */
     public function cards(Request $request)
@@ -85,7 +138,7 @@ class Post extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return array
      */
     public function filters(Request $request)
@@ -96,7 +149,7 @@ class Post extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return array
      */
     public function lenses(Request $request)
@@ -107,7 +160,7 @@ class Post extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return array
      */
     public function actions(Request $request)

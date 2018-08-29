@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Mattmangoni\NovaBlogifyTool\Bootstrap\Blogify;
 use Mattmangoni\NovaBlogifyTool\Http\Middleware\Authorize;
+use Mattmangoni\NovaBlogifyTool\Models\Image;
+use Mattmangoni\NovaBlogifyTool\Observers\ImageObserver;
 
 class ToolServiceProvider extends ServiceProvider
 {
@@ -23,6 +25,7 @@ class ToolServiceProvider extends ServiceProvider
 
             Blogify::injectToolResources();
         });
+        Image::observe(ImageObserver::class);
     }
 
     /**

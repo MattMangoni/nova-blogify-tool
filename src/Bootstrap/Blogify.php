@@ -8,6 +8,7 @@ use Mattmangoni\NovaBlogifyTool\Resources\Tag;
 use Mattmangoni\NovaBlogifyTool\Resources\Post;
 use Mattmangoni\NovaBlogifyTool\Resources\Comment;
 use Mattmangoni\NovaBlogifyTool\Resources\Category;
+use Mattmangoni\NovaBlogifyTool\Resources\Image;
 
 class Blogify
 {

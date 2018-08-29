@@ -60,7 +60,13 @@ class Comment extends Resource
                 ->sortable()
                 ->rules('required'),
 
-            Markdown::make('Body')->rules('required'),
+            Markdown::make('Body')
+                ->rules(
+                    [
+                        'required',
+                        'string'
+                    ]
+                ),
         ];
     }
 
