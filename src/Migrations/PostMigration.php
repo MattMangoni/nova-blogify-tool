@@ -25,8 +25,8 @@ class PostMigration
             $table->softDeletes();
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('image_id')->references('id')->on('images');
             $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('image_id')->references('id')->on('images');
         });
     }
 

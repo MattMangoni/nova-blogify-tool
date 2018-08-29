@@ -13,6 +13,8 @@ use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
+use Mattmangoni\NovaBlogifyTool\Metrics\Posts\NewPosts;
+use Mattmangoni\NovaBlogifyTool\Metrics\Posts\PostsTrend;
 
 class Post extends Resource
 {
@@ -131,7 +133,10 @@ class Post extends Resource
      */
     public function cards(Request $request)
     {
-        return [];
+        return [
+            (new NewPosts)->width('1/2'),
+            (new PostsTrend)->width('1/2')
+        ];
     }
 
     /**
