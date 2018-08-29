@@ -9,7 +9,6 @@ use Mattmangoni\NovaBlogifyTool\Resources\Post;
 use Mattmangoni\NovaBlogifyTool\Resources\Image;
 use Mattmangoni\NovaBlogifyTool\Resources\Comment;
 use Mattmangoni\NovaBlogifyTool\Resources\Category;
-us
 
 class Blogify
 {

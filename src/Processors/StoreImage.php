@@ -29,6 +29,7 @@ class StoreImage
             $thumbFileName,
             file_get_contents($file->getRealPath().'_thumb')
         );
+
         return [
             'title' => $file->getClientOriginalName(),
             'filename' => $newFileName,
