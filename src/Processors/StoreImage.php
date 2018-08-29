@@ -44,7 +44,25 @@ class StoreImage
     public function make_thumb($src, $dest, $desired_width)
     {
         /* read the source image */
-        $source_image = imagecreatefrompng($src);
+        switch ( strtolower( pathinfo( $src, PATHINFO_EXTENSION ))) {
+            case 'jpeg':
+            case 'jpg':
+            $source_image =  imagecreatefromjpeg($src);
+                break;
+
+            case 'png':
+                $source_image =  imagecreatefrompng($src);
+                break;
+
+            case 'gif':
+                $source_image =  imagecreatefromgif($src);
+                break;
+
+            default:
+                throw new InvalidArgumentException('File "'.$src.'" is not valid jpg, png or gif image.');
+                break;
+        }
+
         $width = imagesx($source_image);
         $height = imagesy($source_image);
         /* find the "desired height" of this thumbnail, relative to the desired width  */
