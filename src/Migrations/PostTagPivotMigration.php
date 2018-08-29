@@ -2,8 +2,8 @@
 
 namespace Mattmangoni\NovaBlogifyTool\Migrations;
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
 
 class PostTagPivotMigration
 {
