@@ -31,6 +31,7 @@ class NewUsers extends Value
             7 => 'Since Last Week',
             30 => 'Since Last Month',
             90 => 'Since 3 Months Ago',
+            365 => 'Since Last Year',
         ];
     }
 
