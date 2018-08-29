@@ -64,7 +64,7 @@ class Comment extends Resource
                 ->rules(
                     [
                         'required',
-                        'string'
+                        'string',
                     ]
                 ),
         ];

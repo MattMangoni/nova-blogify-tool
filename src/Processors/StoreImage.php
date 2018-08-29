@@ -13,11 +13,11 @@ class StoreImage
         $newFileName = uniqid(
                 'IMAGE',
                 true
-            ) . '.' . $file->getClientOriginalExtension();
-        $thumbFileName = 'THUMB' . $newFileName;
+            ).'.'.$file->getClientOriginalExtension();
+        $thumbFileName = 'THUMB'.$newFileName;
         $this->make_thumb(
             $file->getRealPath(),
-            $file->getRealPath() . '_thumb',
+            $file->getRealPath().'_thumb',
             300
         );
         // store files
@@ -27,7 +27,7 @@ class StoreImage
         );
         Storage::put(
             $thumbFileName,
-            file_get_contents($file->getRealPath() . '_thumb')
+            file_get_contents($file->getRealPath().'_thumb')
         );
         return [
             'title' => $file->getClientOriginalName(),
@@ -36,7 +36,7 @@ class StoreImage
             'size' => number_format(
                     $file->getSize() / 1000000,
                     2
-                ) . 'MB'
+                ).'MB',
         ];
     }
 

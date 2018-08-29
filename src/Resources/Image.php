@@ -49,7 +49,7 @@ class Image extends Resource
 
             NovaImage::make('Image')
                 ->thumbnail(
-                    function(){
+                    function () {
                         return $this->link;
                     }
                 )
@@ -68,7 +68,7 @@ class Image extends Resource
                     [
                         'required',
                         'string',
-                        'max:255'
+                        'max:255',
                     ]
                 )
                 ->hideWhenCreating(),
@@ -79,7 +79,7 @@ class Image extends Resource
                     [
                         'required',
                         'string',
-                        'max:255'
+                        'max:255',
                     ]
                 )
                 ->hideWhenCreating()
@@ -91,7 +91,7 @@ class Image extends Resource
                     [
                         'required',
                         'string',
-                        'max:255'
+                        'max:255',
                     ]
                 )
                 ->hideFromIndex()
@@ -104,7 +104,7 @@ class Image extends Resource
                     [
                         'required',
                         'string',
-                        'max:255'
+                        'max:255',
                     ]
                 )
                 ->hideWhenCreating()

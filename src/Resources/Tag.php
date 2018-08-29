@@ -6,8 +6,8 @@ use App\Nova\Resource;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Markdown;
 
 class Tag extends Resource
 {
@@ -53,17 +53,17 @@ class Tag extends Resource
                     [
                         'required',
                         'string',
-                        'max:255'
+                        'max:255',
                     ]
                 )
                 ->creationRules(
                     [
-                        'unique:tags,name'
+                        'unique:tags,name',
                     ]
                 )
                 ->updateRules(
                     [
-                        'unique:tags,name,{{resourceId}}'
+                        'unique:tags,name,{{resourceId}}',
                     ]
                 ),
                 Number::make(

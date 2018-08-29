@@ -7,13 +7,12 @@ use App\Nova\Resource;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
-use Laravel\Nova\Fields\Image;
-use Laravel\Nova\Fields\Boolean;
-
 
 class Post extends Resource
 {
@@ -91,12 +90,12 @@ class Post extends Resource
                 )
                 ->creationRules(
                     [
-                        'unique:posts,slug'
+                        'unique:posts,slug',
                     ]
                 )
                 ->updateRules(
                     [
-                        'unique:posts,slug,{{resourceId}}'
+                        'unique:posts,slug,{{resourceId}}',
                     ]
                 ),
             Textarea::make('Summary')
@@ -104,7 +103,7 @@ class Post extends Resource
                     [
                         'required',
                         'string',
-                        'max:255'
+                        'max:255',
                     ]
                 )
                 ->hideFromIndex(),
@@ -112,7 +111,7 @@ class Post extends Resource
                 ->rules(
                     [
                         'required',
-                        'string'
+                        'string',
                     ]
                 )
                 ->hideFromIndex(),

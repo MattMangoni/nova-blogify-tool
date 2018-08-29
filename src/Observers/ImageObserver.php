@@ -2,8 +2,8 @@
 
 namespace Mattmangoni\NovaBlogifyTool\Observers;
 
-use Mattmangoni\NovaBlogifyTool\Models\Image;
 use Illuminate\Support\Facades\Storage;
+use Mattmangoni\NovaBlogifyTool\Models\Image;
 
 class ImageObserver
 {

@@ -4,10 +4,10 @@ namespace Mattmangoni\NovaBlogifyTool;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use Mattmangoni\NovaBlogifyTool\Bootstrap\Blogify;
-use Mattmangoni\NovaBlogifyTool\Http\Middleware\Authorize;
 use Mattmangoni\NovaBlogifyTool\Models\Image;
+use Mattmangoni\NovaBlogifyTool\Bootstrap\Blogify;
 use Mattmangoni\NovaBlogifyTool\Observers\ImageObserver;
+use Mattmangoni\NovaBlogifyTool\Http\Middleware\Authorize;
 
 class ToolServiceProvider extends ServiceProvider
 {
