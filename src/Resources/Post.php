@@ -96,7 +96,7 @@ class Post extends Resource
                         'unique:posts,slug,{{resourceId}}',
                     ]
                 ),
-            Textarea::make('Summary')
+            Markdown::make('Summary')
                 ->rules(
                     [
                         'required',

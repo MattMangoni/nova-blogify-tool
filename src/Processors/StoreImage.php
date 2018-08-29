@@ -44,7 +44,7 @@ class StoreImage
     public function make_thumb($src, $dest, $desired_width)
     {
         /* read the source image */
-        $source_image = imagecreatefromjpeg($src);
+        $source_image = imagecreatefrompng($src);
         $width = imagesx($source_image);
         $height = imagesy($source_image);
         /* find the "desired height" of this thumbnail, relative to the desired width  */
