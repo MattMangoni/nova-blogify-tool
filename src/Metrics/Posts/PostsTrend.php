@@ -1,12 +1,12 @@
 <?php
 
-namespace Mattmangoni\NovaBlogifyTool\Metrics;
+namespace Mattmangoni\NovaBlogifyTool\Metrics\Posts;
 
-use App\User;
 use Illuminate\Http\Request;
 use Laravel\Nova\Metrics\Trend;
+use Mattmangoni\NovaBlogifyTool\Models\Post;
 
-class UsersPerDay extends Trend
+class PostsTrend extends Trend
 {
     /**
      * Calculate the value of the metric.
@@ -16,7 +16,7 @@ class UsersPerDay extends Trend
      */
     public function calculate(Request $request)
     {
-        return $this->countByDays($request, User::class);
+        return $this->countByDays($request, Post::class);
     }
 
     /**

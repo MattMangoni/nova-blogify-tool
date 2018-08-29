@@ -1,12 +1,12 @@
 <?php
 
-namespace Mattmangoni\NovaBlogifyTool\Metrics;
+namespace Mattmangoni\NovaBlogifyTool\Metrics\Posts;
 
-use App\User;
 use Illuminate\Http\Request;
 use Laravel\Nova\Metrics\Value;
+use Mattmangoni\NovaBlogifyTool\Models\Post;
 
-class NewUsers extends Value
+class NewPosts extends Value
 {
     /**
      * Calculate the value of the metric.
@@ -16,7 +16,7 @@ class NewUsers extends Value
      */
     public function calculate(Request $request)
     {
-        return $this->count($request, User::class);
+        return $this->count($request, Post::class);
     }
 
     /**
