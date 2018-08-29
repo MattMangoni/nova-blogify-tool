@@ -135,7 +135,7 @@ class Post extends Resource
     {
         return [
             (new NewPosts)->width('1/2'),
-            (new PostsTrend)->width('1/2')
+            (new PostsTrend)->width('1/2'),
         ];
     }
 
