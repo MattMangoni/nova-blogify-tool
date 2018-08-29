@@ -11,6 +11,7 @@ class Migrator
             'posts' => new PostMigration,
             'comments' => new CommentMigration,
             'tags' => new TagMigration,
+            'post_tag' => new PostTagPivotMigration,
         ];
     }
 }
