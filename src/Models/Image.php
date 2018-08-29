@@ -3,9 +3,8 @@
 namespace Mattmangoni\NovaBlogifyTool\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Tag extends Model
+class Image extends Model
 {
     protected $fillable = [
         'title',
@@ -26,11 +25,11 @@ class Tag extends Model
 
     public function getLinkAttribute()
     {
-        return '/images/' . $this->id;
+        return '/images/'.$this->id;
     }
 
     public function getThumbnailLinkAttribute()
     {
-        return '/images/' . $this->id . '?thumb';
+        return '/images/'.$this->id.'?thumb';
     }
 }

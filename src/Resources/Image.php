@@ -2,32 +2,27 @@
 
 namespace Mattmangoni\NovaBlogifyTool\Resources;
 
-use App\Nova\User;
 use App\Nova\Resource;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Markdown;
-use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\BelongsToMany;
-use Laravel\Nova\Fields\Image;
 
-class Post extends Resource
+class Tag extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = 'Mattmangoni\NovaBlogifyTool\Models\Post';
+    public static $model = 'Mattmangoni\NovaBlogifyTool\Models\Tag';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'title';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -35,7 +30,7 @@ class Post extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'title', 'summary', 'body',
+        'id', 'name',
     ];
 
     public static $displayInNavigation = false;
@@ -51,23 +46,9 @@ class Post extends Resource
         return [
             ID::make()->sortable(),
 
-            BelongsTo::make('Author', 'author', User::class)
-                ->sortable()
-                ->rules('required'),
+            Text::make('Name')->sortable()->rules('required'),
 
-            BelongsTo::make('Category', 'category', Category::class)
-                ->sortable()
-                ->rules('required'),
-
-            HasMany::make('Comments', 'comments', Comment::class)
-                ->sortable()
-                ->rules('required'),
-
-            BelongsToMany::make('Tags', 'tags', Tag::class),
-
-            Text::make('Title')->sortable()->rules('required'),
-
-            Markdown::make('Body')->rules('required'),
+            Markdown::make('Description'),
         ];
     }
 
