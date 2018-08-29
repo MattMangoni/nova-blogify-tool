@@ -49,7 +49,12 @@ class Category extends Resource
 
             Text::make('Name')
                 ->sortable()
-                ->rules('required'),
+                ->rules(
+                    [
+                        'required',
+                        'string',
+                    ]
+                ),
 
             Markdown::make('Description'),
 

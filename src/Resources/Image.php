@@ -6,24 +6,24 @@ use App\Nova\Resource;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Number;
-use Laravel\Nova\Fields\Markdown;
+use Laravel\Nova\Fields\Image as NovaImage; //Check if is okay to use it like NovaImage
+use Mattmangoni\NovaBlogifyTool\Processors\StoreImage;
 
-class Tag extends Resource
+class Image extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = 'Mattmangoni\NovaBlogifyTool\Models\Tag';
+    public static $model = 'Mattmangoni\NovaBlogifyTool\Models\Image';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'title';
 
     /**
      * The columns that should be searched.
@@ -31,7 +31,7 @@ class Tag extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'name',
+        'id', 'title',
     ];
 
     public static $displayInNavigation = false;
@@ -47,7 +47,22 @@ class Tag extends Resource
         return [
             ID::make()->sortable(),
 
-            Text::make('Name')
+            NovaImage::make('Image')
+                ->thumbnail(
+                    function () {
+                        return $this->link;
+                    }
+                )
+                ->hideWhenCreating()
+                ->hideWhenUpdating(),
+
+            NovaImage::make('Image')
+                ->store(new StoreImage)
+                ->hideWhenUpdating()
+                ->hideFromDetail()
+                ->hideFromIndex(),
+
+            Text::make('Title')
                 ->sortable()
                 ->rules(
                     [
@@ -56,25 +71,44 @@ class Tag extends Resource
                         'max:255',
                     ]
                 )
-                ->creationRules(
+                ->hideWhenCreating(),
+
+            Text::make('Filename')
+                ->sortable()
+                ->rules(
                     [
-                        'unique:tags,name',
+                        'required',
+                        'string',
+                        'max:255',
                     ]
                 )
-                ->updateRules(
+                ->hideWhenCreating()
+                ->hideWhenUpdating(),
+
+            Text::make('Thumbnail')
+                ->sortable()
+                ->rules(
                     [
-                        'unique:tags,name,{{resourceId}}',
+                        'required',
+                        'string',
+                        'max:255',
                     ]
-                ),
-                Number::make(
-                    'Count',
-                    'tagged_count'
-                ),
+                )
+                ->hideFromIndex()
+                ->hideWhenCreating()
+                ->hideWhenUpdating(),
 
-            Markdown::make('Description'),
-
-            BelongsToMany::make('Posts'),
-
+            Text::make('Size')
+                ->sortable()
+                ->rules(
+                    [
+                        'required',
+                        'string',
+                        'max:255',
+                    ]
+                )
+                ->hideWhenCreating()
+                ->hideWhenUpdating(),
         ];
     }
 
