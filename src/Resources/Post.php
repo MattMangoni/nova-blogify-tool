@@ -25,7 +25,7 @@ class Post extends Resource
      *
      * @var string
      */
-    public static $model = 'Mattmangoni\NovaBlogifyTool\Models\Post';
+    public static $model = 'Mattmangoni\\NovaBlogifyTool\\Models\\Post';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -75,15 +75,15 @@ class Post extends Resource
 
             BelongsTo::make('Category', 'category', Category::class)
                 ->sortable()
-                ->rules('required'),
+                ->rules(['required']),
 
             HasMany::make('Comments', 'comments', Comment::class)
                 ->sortable()
-                ->rules('required'),
+                ->rules(['required']),
 
             Text::make('Title')
                 ->sortable()
-                ->rules('required'),
+                ->rules(['required']),
 
             Text::make('Slug')
                 ->hideWhenCreating()

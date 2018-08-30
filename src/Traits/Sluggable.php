@@ -14,6 +14,9 @@ trait Sluggable
         'updating',
     ];
 
+    /**
+     * Leverage bootableTraits functionality in case I need to stack multiple.
+     */
     public static function bootSluggable() : void
     {
         foreach (static::$sluggableEvents as $event) {
@@ -34,9 +37,9 @@ trait Sluggable
      * Fetch sluggable field.
      *
      * @param Model $model
-     * @return string
+     * @return string|null
      */
-    protected static function getSluggableField(Model $model) : string
+    protected static function getSluggableField(Model $model) : ?string
     {
         $table = $model->getTable();
 
