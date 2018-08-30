@@ -2,7 +2,6 @@
 
 namespace Mattmangoni\NovaBlogifyTool\Models;
 
-use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Mattmangoni\NovaBlogifyTool\Traits\Sluggable;
@@ -70,7 +69,7 @@ class Post extends Model
      */
     public function author(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(config('nova-blogify.model'), 'user_id');
     }
 
     /**

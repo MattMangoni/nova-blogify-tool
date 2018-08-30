@@ -20,11 +20,11 @@ class StoreImage
 
         $filename_thumb = $new_filename.'_thumb.'.$file_extension;
 
-        Storage::disk('blogify')->put($filename, (string) file_get_contents($image_file));
+        Storage::disk(config('nova-blogify.image_settings.disk'))->put(config('nova-blogify.image_settings.path').$filename, (string) file_get_contents($image_file));
 
-        $image_thumb = Image::make($image_file)->resize(200, 200)->save();
+        $image_thumb = Image::make($image_file)->resize(config('nova-blogify.image_thumb_settings.width'), config('nova-blogify.image_thumb_settings.height'))->save();
 
-        Storage::disk('blogify')->put('thumbs/'.$filename_thumb, $image_thumb);
+        Storage::disk(config('nova-blogify.image_settings.disk'))->put(config('nova-blogify.image_settings.path_thumb').$filename_thumb, $image_thumb);
 
         return [
             'title' => $image_file->getClientOriginalName(),
