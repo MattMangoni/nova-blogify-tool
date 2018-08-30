@@ -44,6 +44,11 @@ class Post extends Resource
         'id', 'title', 'summary', 'body',
     ];
 
+    /**
+     * Hide resource from Nova's standard menu.
+     *
+     * @var bool
+     */
     public static $displayInNavigation = false;
 
     /**
@@ -64,17 +69,14 @@ class Post extends Resource
             Image::make('Image')
                 ->thumbnail(
                     function() {
-                        //dd($this->featured_image->filename);
                         return Storage::disk('blogify')->url($this->featured_image->filename);
-                        //return $this->featured_image->link;
                     }
                 )
                 ->hideWhenCreating()
                 ->hideWhenUpdating(),
 
             BelongsTo::make('Image', 'featured_image')
-                ->hideFromIndex()
-                ->hideFromDetail(),
+                ->onlyOnForms(),
 
             BelongsTo::make('Category', 'category', Category::class)
                 ->sortable()
@@ -99,22 +101,14 @@ class Post extends Resource
                 ->rules(['required', 'string'])
                 ->hideFromIndex(),
 
-            Boolean::make('Featured')
+            Boolean::make('Featured?')
                 ->sortable(),
 
-            DateTime::make('Scheduled For', 'scheduled_for')
-                ->displayUsing(function ($scheduleDate) {
-                    if (! $scheduleDate) {
-                        return;
-                    }
-
-                    return $scheduleDate < now() ? $scheduleDate : null;
-                }),
+            DateTime::make('Scheduled For'),
 
             Boolean::make('Published', function () {
                 return $this->published;
-            })->hideWhenCreating()
-                ->hideWhenUpdating(),
+            })->exceptOnForms(),
 
             BelongsToMany::make('Tags', 'tags', Tag::class),
         ];

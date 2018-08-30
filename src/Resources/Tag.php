@@ -35,6 +35,11 @@ class Tag extends Resource
         'id', 'name',
     ];
 
+    /**
+     * Hide resource from Nova's standard menu.
+     *
+     * @var bool
+     */
     public static $displayInNavigation = false;
 
     /**
@@ -53,7 +58,8 @@ class Tag extends Resource
                 ->rules(['required', 'string', 'max:255'])
                 ->creationRules(['unique:tags,name'])
                 ->updateRules(['unique:tags,name,{{resourceId}}']),
-                Number::make('Count', 'tagged_count'),
+
+            Number::make('Count', 'tagged_count'),
 
             Markdown::make('Description'),
 

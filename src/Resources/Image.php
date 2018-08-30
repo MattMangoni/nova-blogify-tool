@@ -35,6 +35,11 @@ class Image extends Resource
         'id', 'title',
     ];
 
+    /**
+     * Hide resource from Nova's standard menu.
+     *
+     * @var bool
+     */
     public static $displayInNavigation = false;
 
     /**

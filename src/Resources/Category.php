@@ -34,6 +34,11 @@ class Category extends Resource
         'id', 'name', 'description',
     ];
 
+    /**
+     * Hide resource from Nova's standard menu.
+     *
+     * @var bool
+     */
     public static $displayInNavigation = false;
 
     /**
