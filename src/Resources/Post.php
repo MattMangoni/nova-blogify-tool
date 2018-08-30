@@ -106,15 +106,9 @@ class Post extends Resource
 
             DateTime::make('Scheduled For'),
 
-<<<<<<< HEAD
-            Boolean::make('Published', function () { return $this->published; })
-                ->hideWhenCreating()
-                ->hideWhenUpdating(),
-=======
             Boolean::make('Published', function () {
                 return $this->published;
             })->exceptOnForms(),
->>>>>>> dev
 
             BelongsToMany::make('Tags', 'tags', Tag::class),
         ];
