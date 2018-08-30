@@ -101,7 +101,9 @@ class Post extends Resource
 
             DateTime::make('Scheduled For'),
 
-            Boolean::make('Published', function () { return $this->published; })
+            Boolean::make('Published', function () {
+                return $this->published;
+            })
                 ->hideWhenCreating()
                 ->hideWhenUpdating(),
 
