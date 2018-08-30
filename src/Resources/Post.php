@@ -103,8 +103,7 @@ class Post extends Resource
 
             Boolean::make('Published', function () {
                 return $this->published;
-            })->hideWhenCreating()
-                ->hideWhenUpdating(),
+            })->exceptOnForms(),
 
             BelongsToMany::make('Tags', 'tags', Tag::class),
         ];
