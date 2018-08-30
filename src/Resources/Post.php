@@ -72,8 +72,7 @@ class Post extends Resource
                         return Storage::disk('blogify')->url($this->featured_image->filename);
                     }
                 )
-                ->hideWhenCreating()
-                ->hideWhenUpdating(),
+                ->onlyOnDetail(),
 
             BelongsTo::make('Image', 'featured_image')
                 ->onlyOnForms(),
@@ -101,7 +100,7 @@ class Post extends Resource
                 ->rules(['required', 'string'])
                 ->hideFromIndex(),
 
-            Boolean::make('Featured?')
+            Boolean::make('Featured')
                 ->sortable(),
 
             DateTime::make('Scheduled For'),

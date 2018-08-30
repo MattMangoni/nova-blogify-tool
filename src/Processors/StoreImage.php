@@ -20,22 +20,12 @@ class StoreImage
 
         $filename_thumb = $new_filename.'_thumb.'.$file_extension;
 
-
         Storage::disk('blogify')->put($filename, (string)file_get_contents($image_file));
-        //Storage::put('public/uploads/images/'.$filename, (string)file_get_contents($image_file), 'blogify');
 
-        $image_get = Storage::disk('blogify')->path($filename);
-        //$image_get = Storage::get('public/uploads/images/'.$filename);
+        $image_thumb = Image::make($image_file)->resize(200, 200)->save();
 
-        //$image_thumb = Image::make($image_get)
-          //  ->resize(200, 200)
-            //->encode($file_extension, 100);
+        Storage::disk('blogify')->put('thumbs/'.$filename_thumb, $image_thumb);
 
-        $image_thumb = Image::make($image_get)->resize(200, 200)->save($image_get);
-
-        Storage::disk('blogify')->put('thumbs/'.$filename_thumb, file_get_contents($image_thumb));
-
-        //Storage::put('public/uploads/images/thumbs/'.$filename_thumb, (string)$image_thumb, 'blogify');
 
         return [
             'title' => $image_file->getClientOriginalName(),
