@@ -6,7 +6,9 @@ use App\Nova\Resource;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Markdown;
+use Laravel\Nova\Fields\BelongsToMany;
 
 class Tag extends Resource
 {
@@ -46,9 +48,16 @@ class Tag extends Resource
         return [
             ID::make()->sortable(),
 
-            Text::make('Name')->sortable()->rules('required'),
+            Text::make('Name')
+                ->sortable()
+                ->rules(['required', 'string', 'max:255'])
+                ->creationRules(['unique:tags,name'])
+                ->updateRules(['unique:tags,name,{{resourceId}}']),
+                Number::make('Count', 'tagged_count'),
 
             Markdown::make('Description'),
+
+            BelongsToMany::make('Posts'),
         ];
     }
 

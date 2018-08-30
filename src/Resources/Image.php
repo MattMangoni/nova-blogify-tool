@@ -2,21 +2,21 @@
 
 namespace Mattmangoni\NovaBlogifyTool\Resources;
 
-use App\Nova\User;
 use App\Nova\Resource;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Markdown;
-use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Image as NovaImage; //Check if is okay to use it like NovaImage
+use Mattmangoni\NovaBlogifyTool\Processors\StoreImage;
 
-class Comment extends Resource
+class Image extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = 'Mattmangoni\NovaBlogifyTool\Models\Comment';
+    public static $model = 'Mattmangoni\NovaBlogifyTool\Models\Image';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -31,14 +31,9 @@ class Comment extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'title', 'body',
+        'id', 'title',
     ];
 
-    /**
-     * Hide the resource from the default navigation menu.
-     *
-     * @var bool
-     */
     public static $displayInNavigation = false;
 
     /**
@@ -52,21 +47,68 @@ class Comment extends Resource
         return [
             ID::make()->sortable(),
 
-            BelongsTo::make('Post', 'post', Post::class)
-                ->sortable()
-                ->rules('required'),
+            NovaImage::make('Image')
+                ->thumbnail(
+                    function () {
+                        return $this->link;
+                    }
+                )
+                ->hideWhenCreating()
+                ->hideWhenUpdating(),
 
-            BelongsTo::make('Author', 'author', User::class)
-                ->sortable()
-                ->rules('required'),
+            NovaImage::make('Image')
+                ->store(new StoreImage)
+                ->hideWhenUpdating()
+                ->hideFromDetail()
+                ->hideFromIndex(),
 
-            Markdown::make('Body')
+            Text::make('Title')
+                ->sortable()
                 ->rules(
                     [
                         'required',
                         'string',
+                        'max:255',
                     ]
-                ),
+                )
+                ->hideWhenCreating(),
+
+            Text::make('Filename')
+                ->sortable()
+                ->rules(
+                    [
+                        'required',
+                        'string',
+                        'max:255',
+                    ]
+                )
+                ->hideWhenCreating()
+                ->hideWhenUpdating(),
+
+            Text::make('Thumbnail')
+                ->sortable()
+                ->rules(
+                    [
+                        'required',
+                        'string',
+                        'max:255',
+                    ]
+                )
+                ->hideFromIndex()
+                ->hideWhenCreating()
+                ->hideWhenUpdating(),
+
+            Text::make('Size')
+                ->sortable()
+                ->rules(
+                    [
+                        'required',
+                        'string',
+                        'max:255',
+                    ]
+                )
+                ->hideWhenCreating()
+                ->hideWhenUpdating(),
         ];
     }
 

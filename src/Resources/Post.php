@@ -7,8 +7,12 @@ use App\Nova\Resource;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
+//use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\Markdown;
+use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Mattmangoni\NovaBlogifyTool\Metrics\Posts\NewPosts;
@@ -36,7 +40,7 @@ class Post extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'title', 'body',
+        'id', 'title', 'summary', 'body',
     ];
 
     public static $displayInNavigation = false;
@@ -44,7 +48,7 @@ class Post extends Resource
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return array
      */
     public function fields(Request $request)
@@ -56,6 +60,19 @@ class Post extends Resource
                 ->sortable()
                 ->rules('required'),
 
+            /*Image::make('Image')
+                ->thumbnail(
+                    function () {
+                        return $this->image->link;
+                    }
+                )
+                ->hideWhenCreating()
+                ->hideWhenUpdating(),
+
+            BelongsTo::make('Image', 'image')
+                ->hideFromIndex()
+                ->hideFromDetail(),*/
+
             BelongsTo::make('Category', 'category', Category::class)
                 ->sortable()
                 ->rules('required'),
@@ -64,18 +81,34 @@ class Post extends Resource
                 ->sortable()
                 ->rules('required'),
 
+            Text::make('Title')
+                ->sortable()
+                ->rules('required'),
+
+            Text::make('Slug')
+                ->hideWhenCreating()
+                ->hideWhenUpdating(),
+
+            Textarea::make('Summary')
+                ->hideFromIndex(),
+
+            Markdown::make('Body')
+                ->rules(['required', 'string'])
+                ->hideFromIndex(),
+
+            Boolean::make('Featured')
+                ->sortable(),
+
+            DateTime::make('Schedule Post', 'scheduled_for'),
+
             BelongsToMany::make('Tags', 'tags', Tag::class),
-
-            Text::make('Title')->sortable()->rules('required'),
-
-            Markdown::make('Body')->rules('required'),
         ];
     }
 
     /**
      * Get the cards available for the request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return array
      */
     public function cards(Request $request)
@@ -89,7 +122,7 @@ class Post extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return array
      */
     public function filters(Request $request)
@@ -100,7 +133,7 @@ class Post extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return array
      */
     public function lenses(Request $request)
@@ -111,7 +144,7 @@ class Post extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return array
      */
     public function actions(Request $request)

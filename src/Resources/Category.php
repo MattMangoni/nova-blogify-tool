@@ -49,7 +49,11 @@ class Category extends Resource
 
             Text::make('Name')
                 ->sortable()
-                ->rules('required'),
+                ->rules(['required', 'string']),
+
+            Text::make('Slug')
+                ->hideWhenCreating()
+                ->hideWhenUpdating(),
 
             Markdown::make('Description'),
 

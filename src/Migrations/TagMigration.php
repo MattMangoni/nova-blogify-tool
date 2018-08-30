@@ -13,6 +13,7 @@ class TagMigration
             $table->increments('id');
             $table->string('name');
             $table->text('description')->nullable();
+            $table->unsignedInteger('tagged_count')->default(0);
             $table->timestamps();
         });
     }

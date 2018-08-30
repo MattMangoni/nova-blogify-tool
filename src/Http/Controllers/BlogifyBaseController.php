@@ -23,6 +23,8 @@ class BlogifyBaseController
 
     /**
      * Instantiate controller.
+     *
+     * @param Migrator $migrator
      */
     public function __construct(Migrator $migrator)
     {
