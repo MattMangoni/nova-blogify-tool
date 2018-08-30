@@ -99,7 +99,18 @@ class Post extends Resource
             Boolean::make('Featured')
                 ->sortable(),
 
+<<<<<<< HEAD
             DateTime::make('Scheduled For', 'scheduled_for'),
+=======
+            DateTime::make('Scheduled For', 'scheduled_for')
+                ->displayUsing(function ($scheduleDate) {
+                    if (! $scheduleDate) {
+                        return;
+                    }
+
+                    return $scheduleDate < now() ? $scheduleDate : null;
+                }),
+>>>>>>> 7c3e08c69b6858d485edd89f2df2728e8dbc4189
 
             Boolean::make('Published', function () { return $this->published; })
                 ->hideWhenCreating()
