@@ -14,14 +14,12 @@ trait Sluggable
             static::{$event}(function ($model) use ($event) {
                 $column = static::getSluggableField($model);
 
-                $uniqueSlug = static::generateUniqueSlug(
+                $model->slug = static::generateUniqueSlug(
                     $model->{$column},
                     $event === 'updating'
                         ? $model->id
                         : null
                 );
-
-                $model->slug = $uniqueSlug;
             });
         }
     }
