@@ -40,7 +40,7 @@ class Post extends Model
      */
     protected $casts = [
         'featured' => 'boolean',
-        'scheduled_for' => 'datetime:Y-m-d H:i:s'
+        'scheduled_for' => 'datetime:Y-m-d H:i:s',
     ];
 
     /**

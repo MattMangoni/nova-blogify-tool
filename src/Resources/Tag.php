@@ -3,12 +3,12 @@
 namespace Mattmangoni\NovaBlogifyTool\Resources;
 
 use App\Nova\Resource;
-use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Markdown;
+use Laravel\Nova\Fields\BelongsToMany;
 
 class Tag extends Resource
 {
