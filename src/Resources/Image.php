@@ -31,7 +31,7 @@ class Image extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'title', 'filename', 'thumbnail'
+        'id', 'title',
     ];
 
     public static $displayInNavigation = false;
