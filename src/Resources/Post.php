@@ -7,7 +7,7 @@ use App\Nova\Resource;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-//use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\DateTime;
@@ -15,6 +15,7 @@ use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
+use Illuminate\Support\Facades\Storage;
 use Mattmangoni\NovaBlogifyTool\Metrics\Posts\NewPosts;
 use Mattmangoni\NovaBlogifyTool\Metrics\Posts\PostsTrend;
 
@@ -65,13 +66,16 @@ class Post extends Resource
                 ->sortable()
                 ->rules('required'),
 
-            /*Image::make('Image')
-                ->thumbnail(function () {
-                    return $this->image->link;
-                })->onlyOnDetail(),
+            Image::make('Image')
+                ->thumbnail(
+                    function () {
+                        return Storage::disk('blogify')->url($this->featured_image->filename);
+                    }
+                )
+                ->onlyOnDetail(),
 
-            BelongsTo::make('Image', 'image')
-                ->onlyOnForms(),*/
+            BelongsTo::make('Image', 'featured_image')
+                ->onlyOnForms(),
 
             BelongsTo::make('Category', 'category', Category::class)
                 ->sortable()
@@ -96,7 +100,7 @@ class Post extends Resource
                 ->rules(['required', 'string'])
                 ->hideFromIndex(),
 
-            Boolean::make('Featured?')
+            Boolean::make('Featured')
                 ->sortable(),
 
             DateTime::make('Scheduled For'),
