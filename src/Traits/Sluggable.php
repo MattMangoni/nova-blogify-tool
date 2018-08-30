@@ -11,12 +11,11 @@ trait Sluggable
      */
     protected static $sluggableEvents = [
         'saving',
-        'updating'
+        'updating',
     ];
 
     public static function bootSluggable() : void
     {
-
         foreach (static::$sluggableEvents as $event) {
             static::{$event}(function ($model) use ($event) {
                 $column = static::getSluggableField($model);
