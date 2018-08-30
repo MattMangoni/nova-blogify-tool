@@ -62,7 +62,7 @@ class Post extends Model
      */
     public function getPublishedAttribute()
     {
-        return now() > $this->scheduled_for;
+        return now() > $this->scheduled_for || $this->scheduled_for === null;
     }
 
     /**
