@@ -25,8 +25,7 @@ class StoreImage
         $image_thumb = Image::make($image_file)->resize(200, 200)->save();
 
         Storage::disk('blogify')->put('thumbs/'.$filename_thumb, $image_thumb);
-
-
+        
         return [
             'title' => $image_file->getClientOriginalName(),
             'filename' => $filename,
