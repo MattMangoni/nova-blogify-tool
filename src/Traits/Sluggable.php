@@ -6,11 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 trait Sluggable
 {
-    public static function boot()
-    {
-        parent::boot();
+    /**
+     * @var array
+     */
+    protected static $sluggableEvents = [
+        'saving',
+        'updating'
+    ];
 
-        foreach (['saving', 'updating'] as $event) {
+    public static function bootSluggable() : void
+    {
+
+        foreach (static::$sluggableEvents as $event) {
             static::{$event}(function ($model) use ($event) {
                 $column = static::getSluggableField($model);
 
