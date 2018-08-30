@@ -11,7 +11,7 @@ trait Sluggable
      */
     protected static $sluggableEvents = [
         'saving',
-        'updating'
+        'updating',
     ];
 
     public static function bootSluggable() : void
