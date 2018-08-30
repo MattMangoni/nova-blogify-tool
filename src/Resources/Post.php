@@ -26,7 +26,7 @@ class Post extends Resource
      *
      * @var string
      */
-    public static $model = 'Mattmangoni\\NovaBlogifyTool\\Models\\Post';
+    public static $model = 'Mattmangoni\NovaBlogifyTool\Models\Post';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -90,15 +90,13 @@ class Post extends Resource
                 ->rules(['required']),
 
             Text::make('Slug')
-                ->hideWhenCreating()
-                ->hideWhenUpdating(),
+                ->onlyOnForms(),
 
             Textarea::make('Summary')
                 ->hideFromIndex(),
 
             Markdown::make('Body')
-                ->rules(['required', 'string'])
-                ->hideFromIndex(),
+                ->rules(['required', 'string']),
 
             Boolean::make('Featured')
                 ->sortable(),
