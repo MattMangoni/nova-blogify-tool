@@ -102,7 +102,7 @@ class Post extends Resource
             DateTime::make('Scheduled For', 'scheduled_for')
                 ->displayUsing(function ($scheduleDate) {
                     if (! $scheduleDate) {
-                          return null;
+                        return;
                     }
 
                     return $scheduleDate < now() ? $scheduleDate : null;
