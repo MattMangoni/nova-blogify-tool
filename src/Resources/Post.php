@@ -96,7 +96,7 @@ class Post extends Resource
                 ->rules(['required', 'string'])
                 ->hideFromIndex(),
 
-            Boolean::make('Featured')
+            Boolean::make('Featured?')
                 ->sortable(),
 
             DateTime::make('Scheduled For'),
