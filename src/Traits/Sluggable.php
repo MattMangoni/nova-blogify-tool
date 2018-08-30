@@ -66,7 +66,7 @@ trait Sluggable
         if ($latestSlug) {
             $pieces = explode('-', $latestSlug);
 
-            $slug .= '-' . (intval(end($pieces)) + 1);
+            $slug .= '-'.(intval(end($pieces)) + 1);
         }
 
         return $slug;
@@ -79,7 +79,7 @@ trait Sluggable
      * @param int|null $oldId
      * @return string
      */
-    protected  static function getAdditionalQueryString($oldId) : string
+    protected static function getAdditionalQueryString($oldId) : string
     {
         if (is_null($oldId)) {
             return '';
