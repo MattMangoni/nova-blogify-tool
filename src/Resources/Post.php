@@ -43,6 +43,11 @@ class Post extends Resource
         'id', 'title', 'summary', 'body',
     ];
 
+    /**
+     * Hide resource from Nova's standard menu.
+     *
+     * @var bool
+     */
     public static $displayInNavigation = false;
 
     /**
@@ -96,14 +101,20 @@ class Post extends Resource
                 ->rules(['required', 'string'])
                 ->hideFromIndex(),
 
-            Boolean::make('Featured')
+            Boolean::make('Featured?')
                 ->sortable(),
 
             DateTime::make('Scheduled For'),
 
+<<<<<<< HEAD
             Boolean::make('Published', function () { return $this->published; })
                 ->hideWhenCreating()
                 ->hideWhenUpdating(),
+=======
+            Boolean::make('Published', function () {
+                return $this->published;
+            })->exceptOnForms(),
+>>>>>>> dev
 
             BelongsToMany::make('Tags', 'tags', Tag::class),
         ];

@@ -35,6 +35,11 @@ class Tag extends Resource
         'id', 'name',
     ];
 
+    /**
+     * Hide resource from Nova's standard menu.
+     *
+     * @var bool
+     */
     public static $displayInNavigation = false;
 
     /**
