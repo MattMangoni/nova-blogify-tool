@@ -25,7 +25,8 @@ class ToolServiceProvider extends ServiceProvider
 
             Blogify::injectToolResources();
         });
-        Image::observe(ImageObserver::class);
+
+        //Image::observe(ImageObserver::class);
     }
 
     /**

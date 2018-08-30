@@ -7,10 +7,12 @@ use App\Nova\Resource;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Image;
+//use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Markdown;
+use Laravel\Nova\Fields\Textarea;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Mattmangoni\NovaBlogifyTool\Metrics\Posts\NewPosts;
@@ -58,7 +60,7 @@ class Post extends Resource
                 ->sortable()
                 ->rules('required'),
 
-            Image::make('Image')
+            /*Image::make('Image')
                 ->thumbnail(
                     function () {
                         return $this->image->link;
@@ -69,7 +71,7 @@ class Post extends Resource
 
             BelongsTo::make('Image', 'image')
                 ->hideFromIndex()
-                ->hideFromDetail(),
+                ->hideFromDetail(),*/
 
             BelongsTo::make('Category', 'category', Category::class)
                 ->sortable()
@@ -79,47 +81,25 @@ class Post extends Resource
                 ->sortable()
                 ->rules('required'),
 
-            Text::make('Title')->sortable()->rules('required'),
+            Text::make('Title')
+                ->sortable()
+                ->rules('required'),
 
             Text::make('Slug')
-                ->rules(
-                    [
-                        'required',
-                        'string',
-                    ]
-                )
-                ->creationRules(
-                    [
-                        'unique:posts,slug',
-                    ]
-                )
-                ->updateRules(
-                    [
-                        'unique:posts,slug,{{resourceId}}',
-                    ]
-                ),
+                ->hideWhenCreating()
+                ->hideWhenUpdating(),
+
             Textarea::make('Summary')
-                ->rules(
-                    [
-                        'required',
-                        'string',
-                        'max:255',
-                    ]
-                )
-                ->hideFromIndex(),
-            Markdown::make('Body')
-                ->rules(
-                    [
-                        'required',
-                        'string',
-                    ]
-                )
                 ->hideFromIndex(),
 
-            Boolean::make('Is Published')
+            Markdown::make('Body')
+                ->rules(['required', 'string'])
+                ->hideFromIndex(),
+
+            Boolean::make('Featured')
                 ->sortable(),
-            Boolean::make('Is Featured')
-                ->sortable(),
+
+            DateTime::make('Schedule Post', 'scheduled_for'),
 
             BelongsToMany::make('Tags', 'tags', Tag::class),
         ];

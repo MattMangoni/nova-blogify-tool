@@ -5,20 +5,20 @@ namespace Mattmangoni\NovaBlogifyTool\Models;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Mattmangoni\NovaBlogifyTool\Traits\Sluggable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Post extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, Sluggable;
 
     protected $fillable = [
         'user_id',
         'image_id',
         'category_id',
         'title',
-        'slug',
         'summary',
         'body',
         'is_published',
@@ -26,24 +26,44 @@ class Post extends Model
         'published_at',
     ];
 
+    /**
+     * Appended fields.
+     *
+     * @var array
+     */
+    protected $appends = ['published'];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
     protected $casts = [
-        'user_id' => 'integer',
-        'image_id' => 'integer',
-        'category_id' => 'integer',
-        'title' => 'string',
-        'slug' => 'string',
-        'summary' => 'string',
-        'body' => 'string',
-        'is_published' => 'boolean',
-        'is_featured' => 'boolean',
+        'featured' => 'boolean',
+        'scheduled_for' => 'datetime:Y-m-d H:i:s'
     ];
 
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
     protected $dates = [
-        'published_at',
+        'scheduled_for',
+        'deleted_at',
         'created_at',
         'updated_at',
-        'deleted_at',
     ];
+
+    /**
+     * Published mutator.
+     *
+     * @return bool
+     */
+    public function getPublishedAttribute()
+    {
+        return now() > $this->scheduled_for;
+    }
 
     /**
      * @return BelongsTo
@@ -77,6 +97,9 @@ class Post extends Model
         return $this->belongsToMany(Tag::class);
     }
 
+    /**
+     * @return HasMany
+     */
     public function comments(): HasMany
     {
         return $this->hasMany(Comment::class);
