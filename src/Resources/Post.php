@@ -67,11 +67,9 @@ class Post extends Resource
                 ->rules('required'),
 
             Image::make('Image')
-                ->thumbnail(
-                    function () {
-                        return Storage::disk('blogify')->url($this->featured_image->filename);
-                    }
-                )
+                ->thumbnail(function () {
+                    return Storage::disk('blogify')->url($this->featured_image->filename);
+                })
                 ->onlyOnDetail(),
 
             BelongsTo::make('Image', 'featured_image')
