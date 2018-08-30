@@ -76,7 +76,7 @@ class Post extends Model
     /**
      * @return BelongsTo
      */
-    public function image(): BelongsTo
+    public function featured_image(): BelongsTo
     {
         return $this->belongsTo(Image::class, 'image_id');
     }

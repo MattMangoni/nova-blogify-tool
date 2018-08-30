@@ -6,8 +6,9 @@ use App\Nova\User;
 use App\Nova\Resource;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Nova\Fields\Text;
-//use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\DateTime;
@@ -60,18 +61,20 @@ class Post extends Resource
                 ->sortable()
                 ->rules('required'),
 
-            /*Image::make('Image')
+            Image::make('Image')
                 ->thumbnail(
-                    function () {
-                        return $this->image->link;
+                    function() {
+                        //dd($this->featured_image->filename);
+                        return Storage::disk('blogify')->url($this->featured_image->filename);
+                        //return $this->featured_image->link;
                     }
                 )
                 ->hideWhenCreating()
                 ->hideWhenUpdating(),
 
-            BelongsTo::make('Image', 'image')
+            BelongsTo::make('Image', 'featured_image')
                 ->hideFromIndex()
-                ->hideFromDetail(),*/
+                ->hideFromDetail(),
 
             BelongsTo::make('Category', 'category', Category::class)
                 ->sortable()

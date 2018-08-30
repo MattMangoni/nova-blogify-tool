@@ -5,8 +5,9 @@ namespace Mattmangoni\NovaBlogifyTool\Resources;
 use App\Nova\Resource;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Image as NovaImage; //Check if is okay to use it like NovaImage
+use Laravel\Nova\Fields\Image as NovaImage;
 use Mattmangoni\NovaBlogifyTool\Processors\StoreImage;
 
 class Image extends Resource
@@ -48,11 +49,9 @@ class Image extends Resource
             ID::make()->sortable(),
 
             NovaImage::make('Image')
-                ->thumbnail(
-                    function () {
-                        return $this->link;
-                    }
-                )
+                ->thumbnail(function () {
+                    return Storage::disk('blogify')->url($this->filename);
+                })
                 ->hideWhenCreating()
                 ->hideWhenUpdating(),
 
