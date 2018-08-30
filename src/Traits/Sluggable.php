@@ -20,7 +20,6 @@ trait Sluggable
                         ? $model->id
                         : null
                 );
-                
             });
         }
     }
