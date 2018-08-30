@@ -35,7 +35,7 @@ class Comment extends Resource
     ];
 
     /**
-     * Hide the resource from the default navigation menu.
+     * Hide resource from Nova's default menu.
      *
      * @var bool
      */
@@ -61,12 +61,7 @@ class Comment extends Resource
                 ->rules('required'),
 
             Markdown::make('Body')
-                ->rules(
-                    [
-                        'required',
-                        'string',
-                    ]
-                ),
+                ->rules(['required', 'string']),
         ];
     }
 
