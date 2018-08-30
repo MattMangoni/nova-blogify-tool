@@ -66,17 +66,12 @@ class Post extends Resource
                 ->rules('required'),
 
             /*Image::make('Image')
-                ->thumbnail(
-                    function () {
-                        return $this->image->link;
-                    }
-                )
-                ->hideWhenCreating()
-                ->hideWhenUpdating(),
+                ->thumbnail(function () {
+                    return $this->image->link;
+                })->onlyOnDetail(),
 
             BelongsTo::make('Image', 'image')
-                ->hideFromIndex()
-                ->hideFromDetail(),*/
+                ->onlyOnForms(),*/
 
             BelongsTo::make('Category', 'category', Category::class)
                 ->sortable()
