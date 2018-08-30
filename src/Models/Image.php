@@ -25,7 +25,7 @@ class Image extends Model
      */
     public function getLinkAttribute()
     {
-        return '/images/'.$this->id;
+        return url('uploads/images/'.$this->filename);
     }
 
     /**
@@ -35,6 +35,6 @@ class Image extends Model
      */
     public function getThumbnailLinkAttribute()
     {
-        return '/images/'.$this->id.'?thumb';
+        return url('uploads/images/'.$this->thumbnail);
     }
 }

@@ -57,7 +57,7 @@
             Tags
         </router-link>
     </li>
-    {{--<li class="leading-wide mb-4 text-sm">
+    <li class="leading-wide mb-4 text-sm">
         <router-link :to="{
             name: 'index',
             params: {
@@ -66,5 +66,5 @@
         }" class="text-white ml-8 no-underline dim">
             Images
         </router-link>
-    </li>--}}
+    </li>
 </ul>

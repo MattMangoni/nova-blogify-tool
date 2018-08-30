@@ -16,7 +16,7 @@ class ImageObserver
      */
     public function deleting(Image $image)
     {
-        Storage::delete($image->filename);
-        Storage::delete($image->thumbnail);
+        Storage::disk('blogify')->delete($image->filename);
+        Storage::disk('blogify')->delete('thumbs/'.$image->thumbnail);
     }
 }

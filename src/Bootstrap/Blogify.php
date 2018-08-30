@@ -34,7 +34,7 @@ class Blogify
             Post::class,
             Comment::class,
             Tag::class,
-            //Image::class,
+            Image::class,
         ]);
     }
 }
