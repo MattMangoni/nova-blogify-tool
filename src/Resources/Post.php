@@ -6,7 +6,6 @@ use App\Nova\User;
 use App\Nova\Resource;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Boolean;
@@ -16,6 +15,7 @@ use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
+use Illuminate\Support\Facades\Storage;
 use Mattmangoni\NovaBlogifyTool\Metrics\Posts\NewPosts;
 use Mattmangoni\NovaBlogifyTool\Metrics\Posts\PostsTrend;
 
@@ -68,7 +68,7 @@ class Post extends Resource
 
             Image::make('Image')
                 ->thumbnail(
-                    function() {
+                    function () {
                         return Storage::disk('blogify')->url($this->featured_image->filename);
                     }
                 )

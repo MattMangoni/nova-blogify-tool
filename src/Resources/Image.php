@@ -5,8 +5,8 @@ namespace Mattmangoni\NovaBlogifyTool\Resources;
 use App\Nova\Resource;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Laravel\Nova\Fields\Text;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Nova\Fields\Image as NovaImage;
 use Mattmangoni\NovaBlogifyTool\Processors\StoreImage;
 
