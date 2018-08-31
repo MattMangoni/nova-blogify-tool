@@ -7,7 +7,6 @@ use App\Nova\Resource;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\DateTime;
@@ -15,7 +14,6 @@ use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
-use Illuminate\Support\Facades\Storage;
 use Mattmangoni\NovaBlogifyTool\Metrics\Posts\NewPosts;
 use Mattmangoni\NovaBlogifyTool\Metrics\Posts\PostsTrend;
 
