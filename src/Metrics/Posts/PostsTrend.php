@@ -16,7 +16,7 @@ class PostsTrend extends Trend
      */
     public function calculate(Request $request)
     {
-        return $this->countByDays($request, Post::class);
+        return $this->countByDays($request, Post::class)->showLatestValue();
     }
 
     /**
@@ -27,9 +27,15 @@ class PostsTrend extends Trend
     public function ranges()
     {
         return [
+            1 => 'Today',
+            2 => 'Yesterday',
             7 => 'Last 7 Days',
+            14 => 'Last 14 Days',
+            28 => 'Last 28 Days',
             30 => 'Last 30 Days',
             90 => 'Last 90 Days',
+            180 => 'Last 180 Days',
+            365 => 'Last Year',
         ];
     }
 
@@ -40,6 +46,6 @@ class PostsTrend extends Trend
      */
     public function uriKey()
     {
-        return 'users-per-day';
+        return 'posts-per-day';
     }
 }

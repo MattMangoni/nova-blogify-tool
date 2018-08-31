@@ -88,7 +88,8 @@ class Post extends Resource
                 return $this->published;
             })->exceptOnForms(),
 
-            BelongsToMany::make('Tags', 'tags', Tag::class),
+            BelongsToMany::make('Tags', 'tags', Tag::class)
+                ->searchable(true),
         ];
     }
 
