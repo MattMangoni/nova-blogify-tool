@@ -27,6 +27,10 @@ class ToolServiceProvider extends ServiceProvider
         });
 
         Image::observe(ImageObserver::class);
+
+        $this->publishes([
+            $this->configPath() => config_path('nova-blogify.php'),
+        ], 'nova-blogify-config');
     }
 
     /**
@@ -52,6 +56,14 @@ class ToolServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->mergeConfigFrom($this->configPath(), 'nova-blogify');
+    }
+
+    /**
+     * @return string
+     */
+    protected function configPath()
+    {
+        return __DIR__.'/../config/nova-blogify.php';
     }
 }
