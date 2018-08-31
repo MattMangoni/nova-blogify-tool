@@ -52,16 +52,13 @@ class Category extends Resource
         return [
             ID::make()->sortable(),
 
-            Text::make('Name', 'name')
-                ->sortable()
-                ->rules(['required', 'string']),
-
-            Text::make('Slug', 'slug')
-                ->onlyOnForms(),
+            Text::make('Name')
+                ->rules(['required', 'string'])
+                ->sortable(),
 
             Markdown::make('Description'),
 
-            HasMany::make('Posts', 'posts', Post::class),
+            HasMany::make('Posts'),
         ];
     }
 
