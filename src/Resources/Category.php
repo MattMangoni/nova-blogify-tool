@@ -26,20 +26,21 @@ class Category extends Resource
     public static $title = 'name';
 
     /**
-     * The columns that should be searched.
-     *
-     * @var array
-     */
-    public static $search = [
-        'id', 'name', 'description',
-    ];
-
-    /**
      * Hide resource from Nova's standard menu.
      *
      * @var bool
      */
     public static $displayInNavigation = false;
+
+    /**
+     * Get the searchable columns for the resource.
+     *
+     * @return array
+     */
+    public static function searchableColumns()
+    {
+        return config('nova-blogify.resources.categories.search');
+    }
 
     /**
      * Get the fields displayed by the resource.
