@@ -55,16 +55,16 @@ class Image extends Resource
 
             NovaImage::make('Image')
                 ->thumbnail(function () {
-                    return Storage::disk('blogify')->url($this->filename);
+                    return Storage::disk(
+                        config('nova-blogify.image_settings.disk')
+                    )->url($this->filename);
                 })
                 ->hideWhenCreating()
                 ->hideWhenUpdating(),
 
             NovaImage::make('Image')
                 ->store(new StoreImage)
-                ->hideWhenUpdating()
-                ->hideFromDetail()
-                ->hideFromIndex(),
+                ->onlyOnForms(),
 
             Text::make('Title')
                 ->sortable()

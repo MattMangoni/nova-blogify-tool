@@ -1,16 +1,16 @@
 <?php
 
 return [
-    'model' => App\User::class,
+    'user_model' => env('BLOGIFY_USER_MODEL', App\User::class),
 
     'image_settings' => [
-        'disk' => 'blogify',
-        'path' => '',
-        'path_thumb' => 'thumb/',
+        'disk' => env('BLOGIFY_DISK_NAME', 'public'),
+        'path' => env('BLOGIFY_IMAGE_PATH', ''),
+        'path_thumb' => env('BLOGIFY_THUM_PATH', 'thumb/'),
     ],
 
     'image_thumb_settings' => [
-        'width' => '200',
-        'height' => '200',
+        'width' => env('BLOGIFY_THUMB_WIDTH', '200'),
+        'height' => env('BLOGIFY_THUMB_HEIGHT', '200'),
     ],
 ];
