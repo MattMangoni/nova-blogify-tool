@@ -96,7 +96,7 @@ class Post extends Resource
             Markdown::make('Body')
                 ->rules(['required', 'string']),
 
-            Boolean::make('Featured')
+            Boolean::make('Featured?', 'featured')
                 ->sortable(),
 
             DateTime::make('Scheduled For'),
@@ -105,7 +105,8 @@ class Post extends Resource
                 return $this->published;
             })->exceptOnForms(),
 
-            BelongsToMany::make('Tags', 'tags', Tag::class),
+            BelongsToMany::make('Tags', 'tags', Tag::class)
+                ->searchable(true),
         ];
     }
 

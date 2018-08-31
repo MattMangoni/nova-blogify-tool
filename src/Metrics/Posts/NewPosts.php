@@ -31,6 +31,7 @@ class NewPosts extends Value
             7 => 'Since Last Week',
             30 => 'Since Last Month',
             90 => 'Since 3 Months Ago',
+            180 => 'Since 6 Months Ago',
             365 => 'Since Last Year',
         ];
     }
@@ -52,6 +53,6 @@ class NewPosts extends Value
      */
     public function uriKey()
     {
-        return 'new-users';
+        return 'new-posts';
     }
 }

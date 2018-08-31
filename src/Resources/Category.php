@@ -52,13 +52,12 @@ class Category extends Resource
         return [
             ID::make()->sortable(),
 
-            Text::make('Name')
+            Text::make('Name', 'name')
                 ->sortable()
                 ->rules(['required', 'string']),
 
-            Text::make('Slug')
-                ->hideWhenCreating()
-                ->hideWhenUpdating(),
+            Text::make('Slug', 'slug')
+                ->onlyOnForms(),
 
             Markdown::make('Description'),
 
