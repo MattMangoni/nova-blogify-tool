@@ -3,7 +3,7 @@
 return [
     'resources' => [
         'users' => [
-            'model' => env('BLOGIFY_USER_MODEL', App\User::class)
+            'model' => env('BLOGIFY_USER_MODEL', App\User::class),
         ],
 
         'posts' => [
@@ -15,12 +15,12 @@ return [
         ],
 
         'comments' => [
-            'search' => ['id', 'name']
+            'search' => ['id', 'name'],
         ],
 
         'tags' => [
-            'search' => ['id', 'name']
-        ]
+            'search' => ['id', 'name'],
+        ],
     ],
 
     'user_model' => env('BLOGIFY_USER_MODEL', App\User::class),
