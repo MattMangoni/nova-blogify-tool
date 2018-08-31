@@ -64,16 +64,7 @@ class Post extends Resource
 
             BelongsTo::make('Author', 'author', User::class)
                 ->sortable()
-                ->rules('required'),
-
-            Image::make('Image')
-                ->thumbnail(function () {
-                    return Storage::disk('blogify')->url($this->featured_image->filename);
-                })
-                ->onlyOnDetail(),
-
-            BelongsTo::make('Image', 'featured_image')
-                ->onlyOnForms(),
+                ->rules(['required']),
 
             BelongsTo::make('Category', 'category', Category::class)
                 ->sortable()
@@ -87,17 +78,11 @@ class Post extends Resource
                 ->sortable()
                 ->rules(['required']),
 
-            Text::make('Slug')
-                ->onlyOnForms(),
+            Textarea::make('Summary')->hideFromIndex(),
 
-            Textarea::make('Summary')
-                ->hideFromIndex(),
+            Markdown::make('Body')->rules(['required', 'string']),
 
-            Markdown::make('Body')
-                ->rules(['required', 'string']),
-
-            Boolean::make('Featured')
-                ->sortable(),
+            Boolean::make('Featured')->sortable(),
 
             DateTime::make('Scheduled For'),
 

@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'model' => env('BLOGIFY_USER_MODEL', App\User::class),
+    'user_model' => env('BLOGIFY_USER_MODEL', App\User::class),
 
     'image_settings' => [
         'disk' => env('BLOGIFY_DISK_NAME', 'public'),
