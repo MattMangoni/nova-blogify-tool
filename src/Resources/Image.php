@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Nova\Fields\Image as NovaImage;
+use Mattmangoni\NovaBlogifyTool\Fields\ImageUpload;
 use Mattmangoni\NovaBlogifyTool\Processors\StoreImage;
 
 class Image extends Resource
@@ -61,8 +62,8 @@ class Image extends Resource
                 })
                 ->hideWhenCreating()
                 ->hideWhenUpdating(),
-
-            NovaImage::make('Image')
+    
+            ImageUpload::make('Image', 'image', Image::class)
                 ->store(new StoreImage)
                 ->onlyOnForms(),
 
