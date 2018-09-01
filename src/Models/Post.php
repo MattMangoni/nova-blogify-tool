@@ -65,41 +65,41 @@ class Post extends Model
     }
 
     /**
-     * @return BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function author(): BelongsTo
+    public function author() : BelongsTo
     {
-        return $this->belongsTo(config('nova-blogify.model'), 'user_id');
+        return $this->belongsTo(config('nova-blogify.user_model'), 'user_id');
     }
 
     /**
-     * @return BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function featured_image(): BelongsTo
+    public function featured_image() : BelongsTo
     {
         return $this->belongsTo(Image::class, 'image_id');
     }
 
     /**
-     * @return BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function category(): BelongsTo
+    public function category() : BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
 
     /**
-     * @return BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function tags(): BelongsToMany
+    public function tags() : BelongsToMany
     {
         return $this->belongsToMany(Tag::class);
     }
 
     /**
-     * @return HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function comments(): HasMany
+    public function comments() : HasMany
     {
         return $this->hasMany(Comment::class);
     }
