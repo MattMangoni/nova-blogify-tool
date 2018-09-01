@@ -26,20 +26,21 @@ class Comment extends Resource
     public static $title = 'title';
 
     /**
-     * The columns that should be searched.
-     *
-     * @var array
-     */
-    public static $search = [
-        'id', 'title', 'body',
-    ];
-
-    /**
      * Hide resource from Nova's default menu.
      *
      * @var bool
      */
     public static $displayInNavigation = false;
+
+    /**
+     * Get the searchable columns for the resource.
+     *
+     * @return array
+     */
+    public static function searchableColumns()
+    {
+        return config('nova-blogify.resources.comments.search');
+    }
 
     /**
      * Get the fields displayed by the resource.

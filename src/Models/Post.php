@@ -20,9 +20,8 @@ class Post extends Model
         'title',
         'summary',
         'body',
-        'is_published',
-        'is_featured',
-        'published_at',
+        'scheduled_for',
+        'featured',
     ];
 
     /**
@@ -69,7 +68,7 @@ class Post extends Model
      */
     public function author() : BelongsTo
     {
-        return $this->belongsTo(config('nova-blogify.user_model'), 'user_id');
+        return $this->belongsTo(config('nova-blogify.resources.users.model'), 'user_id');
     }
 
     /**
