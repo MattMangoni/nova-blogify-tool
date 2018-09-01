@@ -4,8 +4,8 @@ namespace Mattmangoni\NovaBlogifyTool\Processors;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Intervention\Image\ImageManagerStatic as Image;
-
+use Intervention\Image\ImageManagerStatic;
+use Mattmangoni\NovaBlogifyTool\Models\Image;
 class StoreImage
 {
     public function __invoke(Request $request)
@@ -26,18 +26,22 @@ class StoreImage
                 (string) file_get_contents($image_file)
             );
 
-        $image_thumb = Image::make($image_file)->resize(config('nova-blogify.image_thumb_settings.width'), config('nova-blogify.image_thumb_settings.height'))->save();
+        $image_thumb = ImageManagerStatic::make($image_file)->resize(config('nova-blogify.image_thumb_settings.width'), config('nova-blogify.image_thumb_settings.height'))->save();
 
         Storage::disk(config('nova-blogify.image_settings.disk'))->put(config('nova-blogify.image_settings.path_thumb').$filename_thumb, $image_thumb);
 
+        $image_model = new Image;
+        $image_model->title = $image_file->getClientOriginalName();
+        $image_model->filename = $filename;
+        $image_model->thumbnail = $filename_thumb;
+        $image_model->size = number_format(
+                $image_file->getSize() / 1000000,
+                2
+            ).'MB';
+        $image_model->save();
+
         return [
-            'title' => $image_file->getClientOriginalName(),
-            'filename' => $filename,
-            'thumbnail' => $filename_thumb,
-            'size' => number_format(
-                    $image_file->getSize() / 1000000,
-                    2
-                ).'MB',
+            'image_id' => $image_model->id,
         ];
     }
 }
