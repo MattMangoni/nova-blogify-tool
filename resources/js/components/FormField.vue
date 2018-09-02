@@ -12,13 +12,14 @@
                             ref="fileField"
                             :name="field.name"
                             :id="field.name"
-                            @change="fileChange" />
+                            @change="fileChange"/>
 
                     <div class="flex flex-col items-center justify-center w-full h-full z-20">
                         <template v-if="hasImage">
-                            <div class="preview" :style="previewStyles" />
+                            <div class="preview" :style="previewStyles"/>
 
-                            <div v-if="hasImage" class="w-full absolute pin-b p-4 flex items-center justify-between text-sm bg-90-half z-20">
+                            <div v-if="hasImage"
+                                 class="w-full absolute pin-b p-4 flex items-center justify-between text-sm bg-90-half z-20">
                                 <div class="text-50 ">
                                     {{ currentLabel }}
                                 </div>
@@ -48,7 +49,7 @@
                             <div class="text-xs font-bold uppercase tracking-wide mb-2">{{ __(uploadLabel) }}</div>
 
                             <div>
-                                <upload-icon />
+                                <upload-icon/>
                             </div>
                         </template>
                     </div>
@@ -85,13 +86,13 @@
 <script>
     import IconButton from './IconButton'
     import UploadIcon from './UploadIcon'
-    import { FormField, HandlesValidationErrors, Errors, Minimum } from 'laravel-nova'
+    import {FormField, HandlesValidationErrors, Errors, Minimum} from 'laravel-nova'
 
     export default {
         props: {
             uploadLabel: {
                 type: String,
-                default: 'Drag Image or Click',
+                default: 'Drop file here or click to upload.',
             },
             resourceName: String,
             resourceId: String,
@@ -102,7 +103,7 @@
 
         mixins: [HandlesValidationErrors, FormField],
 
-        components: { IconButton, UploadIcon },
+        components: {IconButton, UploadIcon},
 
         data: () => ({
             file: null,
@@ -145,8 +146,8 @@
                         responseType: 'blob',
                     })
                 )
-                    .then(({ headers, data }) => {
-                        const blob = new Blob([data], { type: headers['content-type'] })
+                    .then(({headers, data}) => {
+                        const blob = new Blob([data], {type: headers['content-type']})
                         let newImage = new Image()
                         let fileName = this.field.value.match(/[^\\/]*$/)[0]
                         this.fileName = fileName
@@ -269,13 +270,13 @@
                     'card',
                     'overflow-hidden',
                     'text-60',
-                    { 'border-2 border-dashed border-60': !this.imagePreview },
+                    {'border-2 border-dashed border-60': !this.imagePreview},
                 ]
             },
 
             previewStyles() {
                 return this.imagePreview
-                    ? { backgroundImage: `url(${this.imagePreview})` }
+                    ? {backgroundImage: `url(${this.imagePreview})`}
                     : {};
             },
 
