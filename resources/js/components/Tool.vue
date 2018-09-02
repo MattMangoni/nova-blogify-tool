@@ -19,10 +19,8 @@
             <div class="px-6 py-8 text-80">
                 <template v-if="installed">
                     <h4 class="mb-4">Blogify is currently installed and active.</h4>
-                    <button class="btn btn-default btn-danger" @click="deleteTables">Uninstall and delete blog tables
-                    </button>
-                    <button class="btn btn-default bg-80 text-20 font-normal" @click="resetContent">Reset blog content
-                    </button>
+                    <button class="btn btn-default btn-danger" @click="deleteTables">Uninstall and delete blog tables</button>
+                    <button class="btn btn-default bg-80 text-20 font-normal" @click="resetContent">Reset blog content</button>
                 </template>
 
                 <template v-else>
@@ -37,65 +35,65 @@
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                installed: null,
-                messages: [],
-                error: false
-            }
+export default {
+    data() {
+        return {
+            installed: null,
+            messages: [],
+            error: false
+        }
+    },
+
+    mounted() {
+        this.installationCheck()
+    },
+
+    methods: {
+        installationCheck () {
+            Nova.request().get("/nova-vendor/nova-blogify-tool/check-migrations")
+                .then(response => this.installed = response.data.installed)
+                .catch(() => this.error = true)
         },
 
-        mounted() {
-            this.installationCheck()
+        install () {
+            Nova.request().get("/nova-vendor/nova-blogify-tool/migrate-tables")
+                .then(response => this.messages = response.data.messages)
+                .then(() => this.reloadPage())
+                .then(() => this.installationCheck())
+                .catch(error => this.error = true)
         },
 
-        methods: {
-            installationCheck() {
-                Nova.request().get("/nova-vendor/nova-blogify-tool/check-migrations")
-                    .then(response => this.installed = response.data.installed)
-                    .catch(() => this.error = true)
-            },
+        resetContent () {
+            this.resetMessages()
 
-            install() {
-                Nova.request().get("/nova-vendor/nova-blogify-tool/migrate-tables")
-                    .then(response => this.messages = response.data.messages)
-                    .then(() => this.reloadPage())
-                    .then(() => this.installationCheck())
-                    .catch(error => this.error = true)
-            },
+            Nova.request().get("/nova-vendor/nova-blogify-tool/reset-content")
+                .then(response => this.messages = response.data.messages)
+                .then(() => {
+                     setTimeout(() => {
+                        this.messages = [];
+                    }, 2000)
+                })
+                .catch(error => this.error = true)
+        },
 
-            resetContent() {
-                this.resetMessages()
+        deleteTables () {
+            this.resetMessages()
 
-                Nova.request().get("/nova-vendor/nova-blogify-tool/reset-content")
-                    .then(response => this.messages = response.data.messages)
-                    .then(() => {
-                        setTimeout(() => {
-                            this.messages = [];
-                        }, 2000)
-                    })
-                    .catch(error => this.error = true)
-            },
+            Nova.request().get("/nova-vendor/nova-blogify-tool/uninstall")
+                .then(response => this.messages = response.data.messages)
+                .then(() => this.reloadPage())
+                .catch(error => this.error = true)
+        },
 
-            deleteTables() {
-                this.resetMessages()
+        resetMessages () {
+            this.messages = []
+        },
 
-                Nova.request().get("/nova-vendor/nova-blogify-tool/uninstall")
-                    .then(response => this.messages = response.data.messages)
-                    .then(() => this.reloadPage())
-                    .catch(error => this.error = true)
-            },
-
-            resetMessages() {
-                this.messages = []
-            },
-
-            reloadPage() {
-                setTimeout(() => {
-                    window.location.reload()
-                }, 1000)
-            }
+        reloadPage () {
+           setTimeout(() => {
+                window.location.reload()
+            }, 1000)
         }
     }
+}
 </script>
