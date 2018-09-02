@@ -5,8 +5,17 @@ Nova.booting((Vue, router) => {
             path: '/nova-blogify-tool',
             component: require('./components/Tool'),
         },
+        {
+            name: 'index-image-upload-preview',
+            component: require('./components/IndexField'),
+        },
+        {
+            name: 'detail-image-upload-preview',
+            component: require('./components/DetailField'),
+        },
+        {
+            name: 'form-image-upload-preview',
+            component: require('./components/FormField'),
+        },
     ]);
-    Vue.component('index-image-upload-preview', require('./components/IndexField'));
-    Vue.component('detail-image-upload-preview', require('./components/DetailField'));
-    Vue.component('form-image-upload-preview', require('./components/FormField'));
-})
+});

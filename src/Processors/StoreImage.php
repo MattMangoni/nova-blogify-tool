@@ -29,7 +29,8 @@ class StoreImage
         $image_thumb = ImageManagerStatic::make($image_file)->resize(config('nova-blogify.image_thumb_settings.width'), config('nova-blogify.image_thumb_settings.height'))->save();
 
         Storage::disk(config('nova-blogify.image_settings.disk'))->put(config('nova-blogify.image_settings.path_thumb').$filename_thumb, $image_thumb);
-
+        
+        //@todo Check is image uploaded with the post or alone in Image page.
         $image_model = new Image;
         $image_model->title = $image_file->getClientOriginalName();
         $image_model->filename = $filename;
@@ -39,7 +40,7 @@ class StoreImage
                 2
             ).'MB';
         $image_model->save();
-
+    
         return [
             'image_id' => $image_model->id,
         ];

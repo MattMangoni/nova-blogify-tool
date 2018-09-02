@@ -91,7 +91,7 @@ export default {
     props: {
         uploadLabel: {
             type: String,
-            default: 'Drag Image or Click',
+            default: 'Drop file here or click to upload.',
         },
         resourceName: String,
         resourceId: String,
