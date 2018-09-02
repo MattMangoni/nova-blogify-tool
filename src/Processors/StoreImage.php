@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManagerStatic;
 use Mattmangoni\NovaBlogifyTool\Models\Image;
+
 class StoreImage
 {
     public function __invoke(Request $request)
@@ -40,7 +41,7 @@ class StoreImage
                 2
             ).'MB';
         $image_model->save();
-    
+        
         return [
             'image_id' => $image_model->id,
         ];

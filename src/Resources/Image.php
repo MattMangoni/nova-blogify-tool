@@ -62,8 +62,8 @@ class Image extends Resource
                 })
                 ->hideWhenCreating()
                 ->hideWhenUpdating(),
-    
-            ImageUpload::make('Image', 'image', Image::class)
+            
+            ImageUpload::make('Image', 'image', self::class)
                 ->store(new StoreImage)
                 ->onlyOnForms(),
 
