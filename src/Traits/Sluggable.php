@@ -71,7 +71,7 @@ trait Sluggable
         if ($latestSlug) {
             $pieces = explode('-', $latestSlug);
             
-            $slug .= '-' . (intval(end($pieces)) + 1);
+            $slug .= '-'.(intval(end($pieces)) + 1);
         }
         
         return $slug;

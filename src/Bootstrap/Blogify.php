@@ -25,7 +25,7 @@ class Blogify
     
     public static function injectToolResources()
     {
-        if (!self::isInstalled()) {
+        if (! self::isInstalled()) {
             return;
         }
         

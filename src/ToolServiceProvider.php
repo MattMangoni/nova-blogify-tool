@@ -17,7 +17,7 @@ class ToolServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'nova-blogify-tool');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'nova-blogify-tool');
         
         $this->app->booted(function () {
             $this->routes();
@@ -44,7 +44,7 @@ class ToolServiceProvider extends ServiceProvider
         
         Route::middleware(['nova', Authorize::class])
             ->prefix('nova-vendor/nova-blogify-tool')
-            ->group(__DIR__ . '/../routes/api.php');
+            ->group(__DIR__.'/../routes/api.php');
     }
     
     /**
@@ -61,6 +61,6 @@ class ToolServiceProvider extends ServiceProvider
      */
     protected function configPath()
     {
-        return __DIR__ . '/../config/nova-blogify.php';
+        return __DIR__.'/../config/nova-blogify.php';
     }
 }

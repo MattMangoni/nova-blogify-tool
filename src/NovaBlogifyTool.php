@@ -13,8 +13,8 @@ class NovaBlogifyTool extends Tool
      */
     public function boot()
     {
-        Nova::script('nova-blogify-tool', __DIR__ . '/../dist/js/tool.js');
-        Nova::style('nova-blogify-tool', __DIR__ . '/../dist/css/tool.css');
+        Nova::script('nova-blogify-tool', __DIR__.'/../dist/js/tool.js');
+        Nova::style('nova-blogify-tool', __DIR__.'/../dist/css/tool.css');
     }
     
     /**
