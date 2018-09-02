@@ -16,7 +16,7 @@ class NovaBlogifyTool extends Tool
         Nova::script('nova-blogify-tool', __DIR__.'/../dist/js/tool.js');
         Nova::style('nova-blogify-tool', __DIR__.'/../dist/css/tool.css');
     }
-    
+
     /**
      * Build the view that renders the navigation links for the tool.
      * @return \Illuminate\View\View

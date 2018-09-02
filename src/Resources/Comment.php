@@ -16,19 +16,19 @@ class Comment extends Resource
      * @var string
      */
     public static $model = 'Mattmangoni\NovaBlogifyTool\Models\Comment';
-    
+
     /**
      * The single value that should be used to represent the resource when being displayed.
      * @var string
      */
     public static $title = 'title';
-    
+
     /**
      * Hide resource from Nova's default menu.
      * @var bool
      */
     public static $displayInNavigation = false;
-    
+
     /**
      * Get the searchable columns for the resource.
      * @return array
@@ -37,7 +37,7 @@ class Comment extends Resource
     {
         return config('nova-blogify.resources.comments.search');
     }
-    
+
     /**
      * Get the fields displayed by the resource.
      * @param  \Illuminate\Http\Request $request
@@ -47,20 +47,20 @@ class Comment extends Resource
     {
         return [
             ID::make()->sortable(),
-            
+
             BelongsTo::make('Post', 'post', Post::class)
                 ->sortable()
                 ->rules('required'),
-            
+
             BelongsTo::make('Author', 'author', User::class)
                 ->sortable()
                 ->rules('required'),
-            
+
             Markdown::make('Body')
                 ->rules(['required', 'string']),
         ];
     }
-    
+
     /**
      * Get the cards available for the request.
      * @param  \Illuminate\Http\Request $request
@@ -70,7 +70,7 @@ class Comment extends Resource
     {
         return [];
     }
-    
+
     /**
      * Get the filters available for the resource.
      * @param  \Illuminate\Http\Request $request
@@ -80,7 +80,7 @@ class Comment extends Resource
     {
         return [];
     }
-    
+
     /**
      * Get the lenses available for the resource.
      * @param  \Illuminate\Http\Request $request
@@ -90,7 +90,7 @@ class Comment extends Resource
     {
         return [];
     }
-    
+
     /**
      * Get the actions available for the resource.
      * @param  \Illuminate\Http\Request $request

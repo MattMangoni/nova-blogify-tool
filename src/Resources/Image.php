@@ -18,13 +18,13 @@ class Image extends Resource
      * @var string
      */
     public static $model = 'Mattmangoni\NovaBlogifyTool\Models\Image';
-    
+
     /**
      * The single value that should be used to represent the resource when being displayed.
      * @var string
      */
     public static $title = 'title';
-    
+
     /**
      * The columns that should be searched.
      * @var array
@@ -33,13 +33,13 @@ class Image extends Resource
         'id',
         'title',
     ];
-    
+
     /**
      * Hide resource from Nova's standard menu.
      * @var bool
      */
     public static $displayInNavigation = false;
-    
+
     /**
      * Get the fields displayed by the resource.
      * @param  \Illuminate\Http\Request $request
@@ -49,7 +49,7 @@ class Image extends Resource
     {
         return [
             ID::make()->sortable(),
-            
+
             NovaImage::make('Image')
                 ->thumbnail(function () {
                     return Storage::disk(
@@ -58,11 +58,11 @@ class Image extends Resource
                 })
                 ->hideWhenCreating()
                 ->hideWhenUpdating(),
-            
+
             ImageUpload::make('Image', 'image', self::class)
                 ->store(new StoreImage)
                 ->onlyOnForms(),
-            
+
             Text::make('Title')
                 ->sortable()
                 ->rules(
@@ -73,7 +73,7 @@ class Image extends Resource
                     ]
                 )
                 ->hideWhenCreating(),
-            
+
             Text::make('Filename')
                 ->sortable()
                 ->rules(
@@ -85,7 +85,7 @@ class Image extends Resource
                 )
                 ->hideWhenCreating()
                 ->hideWhenUpdating(),
-            
+
             Text::make('Thumbnail')
                 ->sortable()
                 ->rules(
@@ -98,7 +98,7 @@ class Image extends Resource
                 ->hideFromIndex()
                 ->hideWhenCreating()
                 ->hideWhenUpdating(),
-            
+
             Text::make('Size')
                 ->sortable()
                 ->rules(
@@ -112,7 +112,7 @@ class Image extends Resource
                 ->hideWhenUpdating(),
         ];
     }
-    
+
     /**
      * Get the cards available for the request.
      * @param  \Illuminate\Http\Request $request
@@ -122,7 +122,7 @@ class Image extends Resource
     {
         return [];
     }
-    
+
     /**
      * Get the filters available for the resource.
      * @param  \Illuminate\Http\Request $request
@@ -132,7 +132,7 @@ class Image extends Resource
     {
         return [];
     }
-    
+
     /**
      * Get the lenses available for the resource.
      * @param  \Illuminate\Http\Request $request
@@ -142,7 +142,7 @@ class Image extends Resource
     {
         return [];
     }
-    
+
     /**
      * Get the actions available for the resource.
      * @param  \Illuminate\Http\Request $request

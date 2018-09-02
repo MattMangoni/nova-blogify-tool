@@ -13,7 +13,7 @@ trait Sluggable
         'saving',
         'updating',
     ];
-    
+
     /**
      * Leverage bootableTraits functionality in case I need to stack multiple.
      */
@@ -22,7 +22,7 @@ trait Sluggable
         foreach (static::$sluggableEvents as $event) {
             static::{$event}(function ($model) use ($event) {
                 $column = static::getSluggableField($model);
-                
+
                 $model->slug = static::generateUniqueSlug(
                     $model->{$column},
                     $event === 'updating'
@@ -32,7 +32,7 @@ trait Sluggable
             });
         }
     }
-    
+
     /**
      * Fetch sluggable field.
      * @param Model $model
@@ -41,7 +41,7 @@ trait Sluggable
     protected static function getSluggableField(Model $model): ?string
     {
         $table = $model->getTable();
-        
+
         switch ($table) {
             case 'posts':
                 return 'title';
@@ -51,7 +51,7 @@ trait Sluggable
                 return null;
         }
     }
-    
+
     /**
      * Generate a unique slug.
      * @param string $fieldValue
@@ -61,22 +61,22 @@ trait Sluggable
     protected static function generateUniqueSlug(string $fieldValue, int $oldId = null): string
     {
         $slug = str_slug($fieldValue);
-        
+
         $additionalQuery = static::getAdditionalQueryString($oldId);
-        
+
         $latestSlug = static::whereRaw("(slug = '$slug' or slug LIKE '$slug-%'){$additionalQuery}")
             ->latest('id')
             ->value('slug');
-        
+
         if ($latestSlug) {
             $pieces = explode('-', $latestSlug);
-            
+
             $slug .= '-'.(intval(end($pieces)) + 1);
         }
-        
+
         return $slug;
     }
-    
+
     /**
      * Additional check for "updating" event.
      * Solves a problem when updating without changing sluggable field.
@@ -88,7 +88,7 @@ trait Sluggable
         if (is_null($oldId)) {
             return '';
         }
-        
+
         return " AND id != '$oldId'";
     }
 }

@@ -22,13 +22,13 @@ class Blogify
             Schema::hasTable('post_tag') &&
             Schema::hasTable('images');
     }
-    
+
     public static function injectToolResources()
     {
         if (! self::isInstalled()) {
             return;
         }
-        
+
         Nova::resources([
             Category::class,
             Post::class,

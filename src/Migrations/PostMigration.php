@@ -25,7 +25,7 @@ class PostMigration
             $table->timestamps();
         });
     }
-    
+
     public function down()
     {
         Schema::dropIfExists('posts');

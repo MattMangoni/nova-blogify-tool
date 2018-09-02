@@ -12,7 +12,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Post extends Model
 {
     use SoftDeletes, Sluggable;
-    
+
+    /**
+     * Fillable properties.
+     * @var array
+     */
     protected $fillable = [
         'user_id',
         'image_id',
@@ -23,13 +27,13 @@ class Post extends Model
         'scheduled_for',
         'featured',
     ];
-    
+
     /**
      * Appended fields.
      * @var array
      */
     protected $appends = ['published'];
-    
+
     /**
      * The attributes that should be cast to native types.
      * @var array
@@ -38,7 +42,7 @@ class Post extends Model
         'featured' => 'boolean',
         'scheduled_for' => 'datetime:Y-m-d H:i:s',
     ];
-    
+
     /**
      * The attributes that should be mutated to dates.
      * @var array
@@ -49,7 +53,7 @@ class Post extends Model
         'created_at',
         'updated_at',
     ];
-    
+
     /**
      * Published mutator.
      * @return bool
@@ -58,7 +62,7 @@ class Post extends Model
     {
         return now() > $this->scheduled_for || $this->scheduled_for === null;
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -66,7 +70,7 @@ class Post extends Model
     {
         return $this->belongsTo(config('nova-blogify.resources.users.model'), 'user_id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -74,7 +78,7 @@ class Post extends Model
     {
         return $this->belongsTo(Image::class, 'image_id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -82,7 +86,7 @@ class Post extends Model
     {
         return $this->belongsTo(Category::class);
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
@@ -90,7 +94,7 @@ class Post extends Model
     {
         return $this->belongsToMany(Tag::class);
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

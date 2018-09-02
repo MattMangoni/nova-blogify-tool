@@ -17,7 +17,7 @@ class NewPosts extends Value
     {
         return $this->count($request, Post::class);
     }
-    
+
     /**
      * Get the ranges available for the metric.
      * @return array
@@ -33,7 +33,7 @@ class NewPosts extends Value
             365 => 'Since Last Year',
         ];
     }
-    
+
     /**
      * Determine for how many minutes the metric should be cached.
      * @return  \DateTimeInterface|\DateInterval|float|int
@@ -42,7 +42,7 @@ class NewPosts extends Value
     {
         return now()->addMinutes(10);
     }
-    
+
     /**
      * Get the URI key for the metric.
      * @return string

@@ -18,7 +18,7 @@ class ImagesMigration
             $table->timestamps();
         });
     }
-    
+
     public function down()
     {
         Schema::dropIfExists('images');

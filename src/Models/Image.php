@@ -16,7 +16,7 @@ class Image extends Model
         'thumbnail',
         'size',
     ];
-    
+
     /**
      * Get image's link.
      * @return string
@@ -25,13 +25,13 @@ class Image extends Model
     {
         return url('uploads/images/'.$this->filename);
     }
-    
+
     /**
      * Get image thumbnail's link.
      * @return string
      */
     public function getThumbnailLinkAttribute()
     {
-        return url('uploads/images/thumbs/'.$this->thumbnail);
+        return url('uploads/images/'.config('nova-blogify.image_settings.disk').$this->thumbnail);
     }
 }

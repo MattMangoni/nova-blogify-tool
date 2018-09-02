@@ -18,7 +18,7 @@ class CommentMigration
             $table->softDeletes();
         });
     }
-    
+
     public function down()
     {
         Schema::dropIfExists('comments');

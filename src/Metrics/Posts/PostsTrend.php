@@ -17,7 +17,7 @@ class PostsTrend extends Trend
     {
         return $this->countByDays($request, Post::class)->showLatestValue();
     }
-    
+
     /**
      * Get the ranges available for the metric.
      * @return array
@@ -36,7 +36,7 @@ class PostsTrend extends Trend
             365 => 'Last Year',
         ];
     }
-    
+
     /**
      * Get the URI key for the metric.
      * @return string
