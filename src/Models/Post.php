@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Post extends Model
 {
     use SoftDeletes, Sluggable;
-
+    
     protected $fillable = [
         'user_id',
         'image_id',
@@ -23,27 +23,24 @@ class Post extends Model
         'scheduled_for',
         'featured',
     ];
-
+    
     /**
      * Appended fields.
-     *
      * @var array
      */
     protected $appends = ['published'];
-
+    
     /**
      * The attributes that should be cast to native types.
-     *
      * @var array
      */
     protected $casts = [
         'featured' => 'boolean',
         'scheduled_for' => 'datetime:Y-m-d H:i:s',
     ];
-
+    
     /**
      * The attributes that should be mutated to dates.
-     *
      * @var array
      */
     protected $dates = [
@@ -52,53 +49,52 @@ class Post extends Model
         'created_at',
         'updated_at',
     ];
-
+    
     /**
      * Published mutator.
-     *
      * @return bool
      */
     public function getPublishedAttribute()
     {
         return now() > $this->scheduled_for || $this->scheduled_for === null;
     }
-
+    
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function author() : BelongsTo
+    public function author(): BelongsTo
     {
         return $this->belongsTo(config('nova-blogify.resources.users.model'), 'user_id');
     }
-
+    
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function featured_image() : BelongsTo
+    public function featured_image(): BelongsTo
     {
         return $this->belongsTo(Image::class, 'image_id');
     }
-
+    
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function category() : BelongsTo
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
-
+    
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function tags() : BelongsToMany
+    public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tag::class);
     }
-
+    
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function comments() : HasMany
+    public function comments(): HasMany
     {
         return $this->hasMany(Comment::class);
     }

@@ -9,17 +9,16 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Category extends Model
 {
     use Sluggable;
-
+    
     /**
      * Model fillable fields.
-     *
      * @var array
      */
     protected $fillable = [
         'name',
         'description',
     ];
-
+    
     /**
      * @return HasMany
      */

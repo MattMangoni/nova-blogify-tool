@@ -8,7 +8,6 @@ class Image extends Model
 {
     /**
      * Fillable properties.
-     *
      * @var array
      */
     protected $fillable = [
@@ -17,24 +16,22 @@ class Image extends Model
         'thumbnail',
         'size',
     ];
-
+    
     /**
      * Get image's link.
-     *
      * @return string
      */
     public function getLinkAttribute()
     {
-        return url('uploads/images/'.$this->filename);
+        return url('uploads/images/' . $this->filename);
     }
-
+    
     /**
      * Get image thumbnail's link.
-     *
      * @return string
      */
     public function getThumbnailLinkAttribute()
     {
-        return url('uploads/images/'.$this->thumbnail);
+        return url('uploads/images/' . $this->thumbnail);
     }
 }

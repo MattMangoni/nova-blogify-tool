@@ -17,7 +17,7 @@ class CategoryMigration
             $table->timestamps();
         });
     }
-
+    
     public function down()
     {
         Schema::dropIfExists('categories');

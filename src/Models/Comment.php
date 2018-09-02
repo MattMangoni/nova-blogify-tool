@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Comment extends Model
 {
     use SoftDeletes;
-
+    
     protected $fillable = [
         'post_id',
         'user_id',
@@ -25,7 +25,7 @@ class Comment extends Model
         'updated_at',
         'deleted_at',
     ];
-
+    
     /**
      * @return BelongsTo
      */
@@ -33,7 +33,7 @@ class Comment extends Model
     {
         return $this->belongsTo(Post::class);
     }
-
+    
     /**
      * @return BelongsTo
      */

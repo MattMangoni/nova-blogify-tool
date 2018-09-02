@@ -10,18 +10,16 @@ class NewPosts extends Value
 {
     /**
      * Calculate the value of the metric.
-     *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return mixed
      */
     public function calculate(Request $request)
     {
         return $this->count($request, Post::class);
     }
-
+    
     /**
      * Get the ranges available for the metric.
-     *
      * @return array
      */
     public function ranges()
@@ -35,20 +33,18 @@ class NewPosts extends Value
             365 => 'Since Last Year',
         ];
     }
-
+    
     /**
      * Determine for how many minutes the metric should be cached.
-     *
      * @return  \DateTimeInterface|\DateInterval|float|int
      */
     public function cacheFor()
     {
         return now()->addMinutes(10);
     }
-
+    
     /**
      * Get the URI key for the metric.
-     *
      * @return string
      */
     public function uriKey()

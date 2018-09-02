@@ -17,7 +17,7 @@ class TagMigration
             $table->timestamps();
         });
     }
-
+    
     public function down()
     {
         Schema::dropIfExists('tags');

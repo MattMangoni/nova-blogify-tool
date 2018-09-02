@@ -21,7 +21,7 @@ class Tag extends Model
         'created_at',
         'updated_at',
     ];
-
+    
     /**
      * @return BelongsToMany
      */
