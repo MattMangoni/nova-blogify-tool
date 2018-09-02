@@ -26,3 +26,4 @@ class NovaBlogifyTool extends Tool
         return view('nova-blogify-tool::navigation');
     }
 }
+
