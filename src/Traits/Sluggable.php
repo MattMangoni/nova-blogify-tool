@@ -17,7 +17,7 @@ trait Sluggable
     /**
      * Leverage bootableTraits functionality in case I need to stack multiple.
      */
-    public static function bootSluggable() : void
+    public static function bootSluggable(): void
     {
         foreach (static::$sluggableEvents as $event) {
             static::{$event}(function ($model) use ($event) {
@@ -35,11 +35,10 @@ trait Sluggable
 
     /**
      * Fetch sluggable field.
-     *
      * @param Model $model
      * @return string|null
      */
-    protected static function getSluggableField(Model $model) : ?string
+    protected static function getSluggableField(Model $model): ?string
     {
         $table = $model->getTable();
 
@@ -55,12 +54,11 @@ trait Sluggable
 
     /**
      * Generate a unique slug.
-     *
      * @param string $fieldValue
      * @param int|null $oldId
      * @return string
      */
-    protected static function generateUniqueSlug(string $fieldValue, int $oldId = null) : string
+    protected static function generateUniqueSlug(string $fieldValue, int $oldId = null): string
     {
         $slug = str_slug($fieldValue);
 
@@ -82,11 +80,10 @@ trait Sluggable
     /**
      * Additional check for "updating" event.
      * Solves a problem when updating without changing sluggable field.
-     *
      * @param int|null $oldId
      * @return string
      */
-    protected static function getAdditionalQueryString($oldId) : string
+    protected static function getAdditionalQueryString($oldId): string
     {
         if (is_null($oldId)) {
             return '';

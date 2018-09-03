@@ -13,6 +13,10 @@ class Post extends Model
 {
     use SoftDeletes, Sluggable;
 
+    /**
+     * Fillable properties.
+     * @var array
+     */
     protected $fillable = [
         'user_id',
         'image_id',
@@ -26,14 +30,12 @@ class Post extends Model
 
     /**
      * Appended fields.
-     *
      * @var array
      */
     protected $appends = ['published'];
 
     /**
      * The attributes that should be cast to native types.
-     *
      * @var array
      */
     protected $casts = [
@@ -43,7 +45,6 @@ class Post extends Model
 
     /**
      * The attributes that should be mutated to dates.
-     *
      * @var array
      */
     protected $dates = [
@@ -55,7 +56,6 @@ class Post extends Model
 
     /**
      * Published mutator.
-     *
      * @return bool
      */
     public function getPublishedAttribute()
@@ -66,7 +66,7 @@ class Post extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function author() : BelongsTo
+    public function author(): BelongsTo
     {
         return $this->belongsTo(config('nova-blogify.resources.users.model'), 'user_id');
     }
@@ -74,7 +74,7 @@ class Post extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function featured_image() : BelongsTo
+    public function featured_image(): BelongsTo
     {
         return $this->belongsTo(Image::class, 'image_id');
     }
@@ -82,7 +82,7 @@ class Post extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function category() : BelongsTo
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
@@ -90,7 +90,7 @@ class Post extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function tags() : BelongsToMany
+    public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tag::class);
     }
@@ -98,7 +98,7 @@ class Post extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function comments() : HasMany
+    public function comments(): HasMany
     {
         return $this->hasMany(Comment::class);
     }

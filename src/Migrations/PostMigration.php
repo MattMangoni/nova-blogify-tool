@@ -12,9 +12,9 @@ class PostMigration
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id')->index();
-            $table->unsignedInteger('image_id')->index()->nullable();
+            $table->unsignedInteger('image_id')->index();
             $table->unsignedInteger('category_id')->index();
-            $table->string('title');
+            $table->string('title')->unique();
             $table->string('slug')->unique();
             $table->string('summary')->nullable();
             $table->text('body');

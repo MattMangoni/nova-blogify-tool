@@ -13,9 +13,6 @@ class PostTagPivotMigration
             $table->increments('id');
             $table->unsignedInteger('post_id');
             $table->unsignedInteger('tag_id');
-
-            $table->foreign('post_id')->references('id')->on('posts');
-            $table->foreign('tag_id')->references('id')->on('tags');
         });
     }
 

@@ -9,14 +9,12 @@ class ImageObserver
 {
     /**
      * Handle the image "deleting" event.
-     *
      * @param Image $image
-     *
      * @return void
      */
     public function deleting(Image $image)
     {
-        Storage::disk('public')->delete($image->filename);
-        Storage::disk('public')->delete('thumbs/'.$image->thumbnail);
+        Storage::disk(config('nova-blogify.image_settings.disk'))->delete($image->filename);
+        Storage::disk(config('nova-blogify.image_settings.disk'))->delete(config('nova-blogify.image_settings.path_thumb').$image->thumbnail);
     }
 }

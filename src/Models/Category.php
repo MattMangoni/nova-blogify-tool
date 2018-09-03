@@ -12,7 +12,6 @@ class Category extends Model
 
     /**
      * Model fillable fields.
-     *
      * @var array
      */
     protected $fillable = [

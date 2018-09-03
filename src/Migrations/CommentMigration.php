@@ -16,9 +16,6 @@ class CommentMigration
             $table->text('body');
             $table->timestamps();
             $table->softDeletes();
-
-            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

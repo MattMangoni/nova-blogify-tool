@@ -14,6 +14,9 @@ use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
+use Mattmangoni\NovaBlogifyTool\Models\Image;
+use Mattmangoni\NovaBlogifyTool\Fields\ImageUpload;
+use Mattmangoni\NovaBlogifyTool\Processors\StoreImage;
 use Mattmangoni\NovaBlogifyTool\Metrics\Posts\NewPosts;
 use Mattmangoni\NovaBlogifyTool\Metrics\Posts\PostsTrend;
 
@@ -21,28 +24,24 @@ class Post extends Resource
 {
     /**
      * The model the resource corresponds to.
-     *
      * @var string
      */
     public static $model = 'Mattmangoni\NovaBlogifyTool\Models\Post';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
-     *
      * @var string
      */
     public static $title = 'title';
 
     /**
      * Hide resource from Nova's standard menu.
-     *
      * @var bool
      */
     public static $displayInNavigation = false;
 
     /**
      * Get the searchable columns for the resource.
-     *
      * @return array
      */
     public static function searchableColumns()
@@ -52,7 +51,6 @@ class Post extends Resource
 
     /**
      * Get the fields displayed by the resource.
-     *
      * @param  \Illuminate\Http\Request $request
      * @return array
      */
@@ -64,6 +62,10 @@ class Post extends Resource
             BelongsTo::make('Author', 'author', User::class)
                 ->sortable()
                 ->rules(['required']),
+
+            ImageUpload::make('Image', 'image', Image::class)
+                ->store(new StoreImage)
+                ->onlyOnForms(),
 
             BelongsTo::make('Category', 'category', Category::class)
                 ->sortable()
@@ -96,7 +98,6 @@ class Post extends Resource
 
     /**
      * Get the cards available for the request.
-     *
      * @param  \Illuminate\Http\Request $request
      * @return array
      */
@@ -110,7 +111,6 @@ class Post extends Resource
 
     /**
      * Get the filters available for the resource.
-     *
      * @param  \Illuminate\Http\Request $request
      * @return array
      */
@@ -121,7 +121,6 @@ class Post extends Resource
 
     /**
      * Get the lenses available for the resource.
-     *
      * @param  \Illuminate\Http\Request $request
      * @return array
      */
@@ -132,7 +131,6 @@ class Post extends Resource
 
     /**
      * Get the actions available for the resource.
-     *
      * @param  \Illuminate\Http\Request $request
      * @return array
      */

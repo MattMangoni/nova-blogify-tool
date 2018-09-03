@@ -10,8 +10,7 @@ class PostsTrend extends Trend
 {
     /**
      * Calculate the value of the metric.
-     *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return mixed
      */
     public function calculate(Request $request)
@@ -21,7 +20,6 @@ class PostsTrend extends Trend
 
     /**
      * Get the ranges available for the metric.
-     *
      * @return array
      */
     public function ranges()
@@ -41,7 +39,6 @@ class PostsTrend extends Trend
 
     /**
      * Get the URI key for the metric.
-     *
      * @return string
      */
     public function uriKey()
