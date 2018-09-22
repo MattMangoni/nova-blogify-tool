@@ -12,7 +12,6 @@ class PostMigration
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id')->index();
-            $table->unsignedInteger('image_id')->index();
             $table->unsignedInteger('category_id')->index();
             $table->string('title')->unique();
             $table->string('slug')->unique();
@@ -20,7 +19,7 @@ class PostMigration
             $table->text('body');
             $table->boolean('published')->default(false);
             $table->boolean('featured')->default(false);
-            $table->datetime('scheduled_for')->nullable();
+            $table->datetime('scheduled_for')->useCurrent();
             $table->softDeletes();
             $table->timestamps();
         });

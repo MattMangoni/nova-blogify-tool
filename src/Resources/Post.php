@@ -14,11 +14,9 @@ use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
-use Mattmangoni\NovaBlogifyTool\Models\Image;
-use Mattmangoni\NovaBlogifyTool\Fields\ImageUpload;
-use Mattmangoni\NovaBlogifyTool\Processors\StoreImage;
 use Mattmangoni\NovaBlogifyTool\Metrics\Posts\NewPosts;
 use Mattmangoni\NovaBlogifyTool\Metrics\Posts\PostsTrend;
+use Kingsley\NovaMediaLibrary\Fields\Image;
 
 class Post extends Resource
 {
@@ -63,9 +61,8 @@ class Post extends Resource
                 ->sortable()
                 ->rules(['required']),
 
-            ImageUpload::make('Image', 'image', Image::class)
-                ->store(new StoreImage)
-                ->onlyOnForms(),
+            Image::make('Image', config('nova-blogify.image_settings.collection'))
+                ->usingConversion('thumb'),
 
             BelongsTo::make('Category', 'category', Category::class)
                 ->sortable()

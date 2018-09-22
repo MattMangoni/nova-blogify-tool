@@ -6,7 +6,4 @@ Nova.booting((Vue, router) => {
             component: require('./components/Tool'),
         }
     ]);
-    Vue.component('index-image-upload-preview', require('./components/IndexField'));
-    Vue.component('detail-image-upload-preview', require('./components/DetailField'));
-    Vue.component('form-image-upload-preview', require('./components/FormField'));
 });
