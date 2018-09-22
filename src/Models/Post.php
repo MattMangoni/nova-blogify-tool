@@ -19,7 +19,6 @@ class Post extends Model
      */
     protected $fillable = [
         'user_id',
-        'image_id',
         'category_id',
         'title',
         'summary',
@@ -69,14 +68,6 @@ class Post extends Model
     public function author(): BelongsTo
     {
         return $this->belongsTo(config('nova-blogify.resources.users.model'), 'user_id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function featured_image(): BelongsTo
-    {
-        return $this->belongsTo(Image::class, 'image_id');
     }
 
     /**

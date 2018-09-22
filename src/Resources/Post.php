@@ -14,9 +14,6 @@ use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
-use Mattmangoni\NovaBlogifyTool\Models\Image;
-use Mattmangoni\NovaBlogifyTool\Fields\ImageUpload;
-use Mattmangoni\NovaBlogifyTool\Processors\StoreImage;
 use Mattmangoni\NovaBlogifyTool\Metrics\Posts\NewPosts;
 use Mattmangoni\NovaBlogifyTool\Metrics\Posts\PostsTrend;
 

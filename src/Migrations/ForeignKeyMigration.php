@@ -12,7 +12,6 @@ class ForeignKeyMigration
         Schema::table('posts', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('category_id')->references('id')->on('categories');
-            $table->foreign('image_id')->references('id')->on('images');
         });
 
         Schema::table('comments', function (Blueprint $table) {
@@ -31,7 +30,6 @@ class ForeignKeyMigration
         Schema::table('posts', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
             $table->dropForeign(['category_id']);
-            $table->dropForeign(['image_id']);
         });
 
         Schema::table('comments', function (Blueprint $table) {
