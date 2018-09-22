@@ -8,10 +8,13 @@ use Mattmangoni\NovaBlogifyTool\Traits\Sluggable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\File;
 
-class Post extends Model
+class Post extends Model implements HasMedia
 {
-    use SoftDeletes, Sluggable;
+    use SoftDeletes, Sluggable, HasMediaTrait;
 
     /**
      * Fillable properties.
@@ -102,5 +105,15 @@ class Post extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function registerMediaCollections()
+    {
+        $this->addMediaCollection(config('nova-blogify.image_settings.collection'))
+            ->useDisk(config('nova-blogify.image_settings.disk'))
+            ->acceptsFile(function (File $file) {
+                return $file->mimeType === 'image/jpeg';
+            })
+            ->singleFile();
     }
 }
