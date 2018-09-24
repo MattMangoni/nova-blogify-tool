@@ -9,8 +9,6 @@ class NovaBlogifyTool extends Tool
 {
     /**
      * Perform any tasks that need to happen when the tool is booted.
-     *
-     * @return void
      */
     public function boot()
     {

@@ -3,17 +3,15 @@
 namespace Mattmangoni\NovaBlogifyTool;
 
 use Laravel\Nova\Nova;
-use Laravel\Nova\Events\ServingNova;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Mattmangoni\NovaBlogifyTool\Resources\Category;
 use Mattmangoni\NovaBlogifyTool\Http\Middleware\Authorize;
 
 class ToolServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any application services.
-     *
-     * @return void
      */
     public function boot()
     {
@@ -21,17 +19,15 @@ class ToolServiceProvider extends ServiceProvider
 
         $this->app->booted(function () {
             $this->routes();
-        });
 
-        Nova::serving(function (ServingNova $event) {
-            //
+            Nova::resources([
+                Category::class,
+            ]);
         });
     }
 
     /**
      * Register the tool's routes.
-     *
-     * @return void
      */
     protected function routes()
     {
@@ -40,17 +36,7 @@ class ToolServiceProvider extends ServiceProvider
         }
 
         Route::middleware(['nova', Authorize::class])
-                ->prefix('nova-vendor/nova-blogify-tool')
-                ->group(__DIR__.'/../routes/api.php');
-    }
-
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
+            ->prefix('nova-vendor/nova-blogify-tool')
+            ->group(__DIR__.'/../routes/api.php');
     }
 }
