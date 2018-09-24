@@ -2,15 +2,15 @@
 
 namespace Mattmangoni\NovaBlogifyTool\Models;
 
+use Spatie\MediaLibrary\File;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Mattmangoni\NovaBlogifyTool\Traits\Sluggable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-use Spatie\MediaLibrary\File;
 
 class Post extends Model implements HasMedia
 {

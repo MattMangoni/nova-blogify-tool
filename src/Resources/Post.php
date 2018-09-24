@@ -14,9 +14,9 @@ use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
+use Kingsley\NovaMediaLibrary\Fields\Image;
 use Mattmangoni\NovaBlogifyTool\Metrics\Posts\NewPosts;
 use Mattmangoni\NovaBlogifyTool\Metrics\Posts\PostsTrend;
-use Kingsley\NovaMediaLibrary\Fields\Image;
 
 class Post extends Resource
 {
