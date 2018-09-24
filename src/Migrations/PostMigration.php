@@ -20,7 +20,7 @@ class PostMigration
             $table->text('body');
             $table->boolean('published')->default(false);
             $table->boolean('featured')->default(false);
-            $table->datetime('scheduled_for')->nullable();
+            $table->timestamp('scheduled_for')->useCurrent();
             $table->softDeletes();
             $table->timestamps();
         });
