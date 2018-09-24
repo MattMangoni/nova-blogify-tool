@@ -35,7 +35,7 @@ class Bootstrap
     public function isInstalled(): bool
     {
         foreach ($this->expectedTables as $table) {
-            if (!Schema::hasTable($table)) {
+            if (! Schema::hasTable($table)) {
                 return false;
             }
         }
