@@ -260,7 +260,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {}
+  mounted: function mounted() {
+    this.checkInstallation();
+  },
+  data: function data() {
+    return {
+      installed: false
+    };
+  },
+
+
+  methods: {
+    checkInstallation: function checkInstallation() {}
+  }
 });
 
 /***/ }),
@@ -274,9 +286,7 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("heading", { staticClass: "mb-6" }, [
-        _vm._v("Welcome to the Blogify dashboard.")
-      ]),
+      _c("heading", { staticClass: "mb-6" }, [_vm._v("Blogify dashboard.")]),
       _vm._v(" "),
       _c(
         "card",
@@ -285,10 +295,21 @@ var render = function() {
         },
         [
           _c("h1", { staticClass: "text-4xl font-light mt-6 mb-2" }, [
-            _vm._v("\n            Blogify\n        ")
+            _vm._v("Blogify")
           ]),
           _vm._v(" "),
-          _c("p", { staticClass: "mb-8" }, [_vm._v("Random stuff")])
+          _c("p", { staticClass: "mb-8" }, [
+            _vm._v("\n            Status: "),
+            _c(
+              "span",
+              {
+                staticClass:
+                  "ml-4 px-6 py-2 inline-block btn btn-danger rounded",
+                attrs: { disabled: "disabled" }
+              },
+              [_vm._v("Not installed")]
+            )
+          ])
         ]
       )
     ],
