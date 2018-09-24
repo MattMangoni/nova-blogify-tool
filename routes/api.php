@@ -1,7 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Artisan;
 use Mattmangoni\NovaBlogifyTool\Bootstrap;
 
 /*
@@ -19,12 +19,14 @@ Route::get('/check-installation', function () {
     return response()->json(['installation_status' => (new Bootstrap())->isInstalled()], 200);
 });
 
-Route::post('/install', function () {
+Route::delete('/reset-content', function () {
     try {
-        Artisan::call('migrate');
+        foreach (Bootstrap::$expectedTables as $table) {
+            DB::table($table)->truncate();
+        }
 
-        return response()->json(['message' => 'Blogify successfully installed'], 200);
+        return response()->json(['message' => 'Blog content reset complete!'], 200);
     } catch (\Exception $e) {
-        return response()->json(['message' => 'Unable to run Blogify\'s migrations.'], 200);
+        return response()->json(['message' => 'Unable to reset the blog content.'], 500);
     }
 });

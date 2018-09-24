@@ -284,15 +284,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return _this.installed = false;
       });
     },
-    processInstallation: function processInstallation() {
+    resetInstallation: function resetInstallation() {
       var _this2 = this;
 
-      Nova.request().post("/nova-blogify/install").then(function (response) {
-        return _this2.$toasted.show(response.data.message, { type: "success" });
-      }).then(function () {
-        return _this2.checkInstallation();
+      confirm("Are you sure? This will delete all your blog content!");
+
+      Nova.request().delete("/nova-blogify/reset-content").then(function (response) {
+        _this2.$toasted.show(response.data.message, { type: "success" });
+        _this2.checkInstallation();
       }).catch(function (error) {
-        return _this2.$toasted.show(error.response.data.message, { type: "error" });
+        _this2.$toasted.show(error.response.data.message, { type: "error" });
       });
     }
   }
@@ -323,38 +324,30 @@ var render = function() {
           _vm._v(" "),
           !_vm.installed
             ? _c("div", { staticClass: "mb-8" }, [
-                _c("p", [
-                  _vm._v("Status: "),
-                  _c(
-                    "span",
-                    {
-                      staticClass:
-                        "ml-4 px-6 py-2 inline-block btn btn-danger rounded"
-                    },
-                    [_vm._v("Not installed")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "mt-6 text-center" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-primary px-6 py-2 rounded",
-                      on: { click: _vm.processInstallation }
-                    },
-                    [_vm._v("Install now")]
-                  )
-                ])
-              ])
-            : _c("p", { staticClass: "mb-8" }, [
-                _vm._v("\n            Status: "),
                 _c(
-                  "span",
+                  "p",
                   {
                     staticClass:
-                      "ml-4 px-6 py-2 inline-block btn btn-primary rounded"
+                      "flex justify-center text-center btn btn-danger px-6 py-2 rounded"
                   },
-                  [_vm._v("Installed")]
+                  [_vm._v("Some tables are missing")]
+                ),
+                _vm._v(" "),
+                _c("p", { staticClass: "mt-6 text-center" }, [
+                  _c("code", [
+                    _vm._v("Run `php artisan migrate` to start blogging")
+                  ])
+                ])
+              ])
+            : _c("div", { staticClass: "mb-8" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "flex justify-center text-center btn btn-danger px-6 py-2 rounded",
+                    on: { click: _vm.resetInstallation }
+                  },
+                  [_vm._v("Reset blog content")]
                 )
               ])
         ]

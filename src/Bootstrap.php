@@ -13,7 +13,7 @@ class Bootstrap
      *
      * @var array
      */
-    protected $expectedTables = ['categories'];
+    public static $expectedTables = ['categories'];
 
     /**
      * Inject blogify resources.
@@ -34,7 +34,7 @@ class Bootstrap
      */
     public function isInstalled(): bool
     {
-        foreach ($this->expectedTables as $table) {
+        foreach (static::$expectedTables as $table) {
             if (!Schema::hasTable($table)) {
                 return false;
             }
