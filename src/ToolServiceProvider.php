@@ -37,7 +37,7 @@ class ToolServiceProvider extends ServiceProvider
         }
 
         Route::middleware(['nova', Authorize::class])
-            ->prefix('nova-vendor/nova-blogify-tool')
+            ->prefix('nova-blogify')
             ->group(__DIR__.'/../routes/api.php');
     }
 }
