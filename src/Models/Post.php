@@ -6,10 +6,30 @@ use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Mattmangoni\NovaBlogifyTool\Models\Traits\Sluggable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Post extends Model
 {
+    use Sluggable;
+
+    /**
+     * Specify sluggable field.
+     *
+     * @var string
+     */
+    protected $sluggableField = 'title';
+
+    /**
+     * each post belongs to an author.
+     *
+     * @return BelongsTo
+     */
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
+
     /**
      * each post belongs to an author.
      *
