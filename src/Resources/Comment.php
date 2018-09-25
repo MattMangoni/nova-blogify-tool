@@ -2,9 +2,12 @@
 
 namespace Mattmangoni\NovaBlogifyTool\Resources;
 
+use App\Nova\User;
 use App\Nova\Resource;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Markdown;
+use Laravel\Nova\Fields\BelongsTo;
 
 class Comment extends Resource
 {
@@ -28,7 +31,7 @@ class Comment extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'body',
     ];
 
     /**
@@ -42,6 +45,12 @@ class Comment extends Resource
     {
         return [
             ID::make()->sortable(),
+
+            BelongsTo::make('Author', 'author', User::class),
+
+            BelongsTo::make('Post'),
+
+            Markdown::make('Body'),
         ];
     }
 
