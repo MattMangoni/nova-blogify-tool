@@ -55,7 +55,8 @@ class Tag extends Resource
                 ->creationRules(['unique:tags,name'])
                 ->updateRules(['unique:tags,name,{{resourceId}}']),
 
-            Number::make('Count', 'tagged_count'),
+            Number::make('Count', 'tagged_count')
+                ->rules(['required', 'numeric', 'min:0']),
 
             Markdown::make('Description'),
 

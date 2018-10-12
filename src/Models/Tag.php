@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Tag extends Model
 {
+    protected $attributes = [
+        'tagged_count' => 0
+    ];
+
     /**
      * Fillable properties.
      * @var array

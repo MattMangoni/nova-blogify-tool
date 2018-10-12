@@ -9,7 +9,7 @@ class ImagesMigration
 {
     public function up()
     {
-        Schema::create('images', function (Blueprint $table) {
+        Schema::create('blog_images', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title')->unique();
             $table->string('filename')->unique();
@@ -21,6 +21,6 @@ class ImagesMigration
 
     public function down()
     {
-        Schema::dropIfExists('images');
+        Schema::dropIfExists('blog_images');
     }
 }
