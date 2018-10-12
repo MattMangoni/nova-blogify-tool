@@ -9,7 +9,7 @@ class PostMigration
 {
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('blog_posts', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id')->index();
             $table->unsignedInteger('image_id')->index();
@@ -28,6 +28,6 @@ class PostMigration
 
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('blog_posts');
     }
 }

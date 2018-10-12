@@ -9,7 +9,7 @@ class TagMigration
 {
     public function up()
     {
-        Schema::create('tags', function (Blueprint $table) {
+        Schema::create('blog_tags', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->text('description')->nullable();
@@ -20,6 +20,6 @@ class TagMigration
 
     public function down()
     {
-        Schema::dropIfExists('tags');
+        Schema::dropIfExists('blog_tags');
     }
 }
