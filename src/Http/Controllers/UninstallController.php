@@ -11,7 +11,7 @@ class UninstallController extends BlogifyBaseController
     protected function processTask() : void
     {
         foreach ($this->migrations as $tableName => $migrationClass) {
-            if ($tableName != 'foreign' || ! Schema::hasTable($tableName) ) {
+            if ($tableName != 'foreign' || ! Schema::hasTable($tableName)) {
                 $this->messages[] = BlogifyResponder::deleteTableNotFound($tableName);
             }
 

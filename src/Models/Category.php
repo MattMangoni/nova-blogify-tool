@@ -10,12 +10,12 @@ class Category extends Model
 {
     use Sluggable;
 
-	public function getTable()
-	{
-		return config('nova-blogify.table_prefix').parent::getTable();
+    public function getTable()
+    {
+        return config('nova-blogify.table_prefix').parent::getTable();
     }
 
-	/**
+    /**
      * Model fillable fields.
      * @var array
      */

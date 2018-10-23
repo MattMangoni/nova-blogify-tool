@@ -16,14 +16,12 @@ class Post extends Model implements HasMedia
 {
     use SoftDeletes, Sluggable, HasMediaTrait;
 
-
-	public function getTable()
-	{
-		return config('nova-blogify.table_prefix').parent::getTable();
+    public function getTable()
+    {
+        return config('nova-blogify.table_prefix').parent::getTable();
     }
 
-
-	/**
+    /**
      * Fillable properties.
      * @var array
      */
