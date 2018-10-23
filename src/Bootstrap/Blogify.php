@@ -13,12 +13,13 @@ class Blogify
 {
     public static function isInstalled()
     {
+    	$prefix = config('nova-blogify.table_prefix');
         return
-            Schema::hasTable('posts') &&
-            Schema::hasTable('categories') &&
-            Schema::hasTable('comments') &&
-            Schema::hasTable('tags') &&
-            Schema::hasTable('post_tag');
+            Schema::hasTable($prefix. 'posts') &&
+            Schema::hasTable($prefix.'categories') &&
+            Schema::hasTable($prefix.'comments') &&
+            Schema::hasTable($prefix.'tags') &&
+            Schema::hasTable($prefix.'post_tag');
     }
 
     public static function injectToolResources()

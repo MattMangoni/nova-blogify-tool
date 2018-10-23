@@ -2,7 +2,6 @@
 
 namespace Mattmangoni\NovaBlogifyTool\Resources;
 
-use App\Nova\User;
 use App\Nova\Resource;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
@@ -57,7 +56,7 @@ class Post extends Resource
         return [
             ID::make()->sortable(),
 
-            BelongsTo::make('Author', 'author', User::class)
+            BelongsTo::make('Author', 'author', config('nova-blogify.resources.users.resource'))
                 ->sortable()
                 ->rules(['required']),
 

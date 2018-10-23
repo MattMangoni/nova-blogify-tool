@@ -6,12 +6,15 @@ class Migrator
 {
     public function getMigrations()
     {
+
+    	$prefix = config('nova-blogify.table_prefix');
         return [
-            'categories' => new CategoryMigration,
-            'posts' => new PostMigration,
-            'comments' => new CommentMigration,
-            'tags' => new TagMigration,
-            'post_tag' => new PostTagPivotMigration,
+            $prefix.'categories' => new CategoryMigration,
+            $prefix.'posts' => new PostMigration,
+            $prefix.'comments' => new CommentMigration,
+            $prefix.'tags' => new TagMigration,
+            $prefix.'post_tag' => new PostTagPivotMigration,
+            'foreign' => new ForeignKeyMigration,
         ];
     }
 }

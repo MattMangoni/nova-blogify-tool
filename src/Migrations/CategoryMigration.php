@@ -9,7 +9,8 @@ class CategoryMigration
 {
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+
+	    Schema::create(config('nova-blogify.table_prefix').'categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('slug')->unique();
@@ -20,6 +21,6 @@ class CategoryMigration
 
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists(config('nova-blogify.table_prefix').'categories');
     }
 }

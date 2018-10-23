@@ -11,16 +11,18 @@ class ResetController extends BlogifyBaseController
     protected function processTask() : void
     {
         foreach ($this->migrations as $tableName => $migrationClass) {
-            if (! Schema::hasTable($tableName)) {
-                $this->messages[] = BlogifyResponder::resetTableNotFound($tableName);
-            }
+	        if ( $tableName != 'foreign' ) {
+		        if ( ! Schema::hasTable( $tableName ) ) {
+			        $this->messages[] = BlogifyResponder::resetTableNotFound( $tableName );
+		        }
 
-            try {
-                $this->truncateTable($tableName);
-                $this->messages[] = BlogifyResponder::resetSuccess($tableName);
-            } catch (\Exception $e) {
-                $this->messages[] = BlogifyResponder::resetFailure($tableName);
-            }
+		        try {
+			        $this->truncateTable( $tableName );
+			        $this->messages[] = BlogifyResponder::resetSuccess( $tableName );
+		        } catch ( \Exception $e ) {
+			        $this->messages[] = BlogifyResponder::resetFailure( $tableName );
+		        }
+	        }
         }
     }
 

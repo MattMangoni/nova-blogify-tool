@@ -60,3 +60,20 @@ Route::get('/posts', function () {
     return Category::all();
 });
 ```
+
+## Settings
+
+User model:
+```php
+BLOGIFY_USER_MODEL=App\User
+```
+
+User nova resource:
+```php
+BLOGIFY_USER_NOVA_RESOURCE=App\Nova\User
+```
+
+Table prefix:
+```php
+BLOGIFY_TABLE_PREFIX=blogify_
+```
