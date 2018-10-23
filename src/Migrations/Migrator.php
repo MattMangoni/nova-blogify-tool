@@ -6,8 +6,8 @@ class Migrator
 {
     public function getMigrations()
     {
+        $prefix = config('nova-blogify.table_prefix');
 
-    	$prefix = config('nova-blogify.table_prefix');
         return [
             $prefix.'categories' => new CategoryMigration,
             $prefix.'posts' => new PostMigration,

@@ -9,8 +9,8 @@ class ForeignKeyMigration
 {
     public function up()
     {
-    	$usermodel =  config('nova-blogify.resources.users.model');
-	    $usertable = (new $usermodel)->getTable();
+        $usermodel = config('nova-blogify.resources.users.model');
+        $usertable = (new $usermodel)->getTable();
 
         Schema::table(config('nova-blogify.table_prefix').'posts', function (Blueprint $table) use ($usertable) {
             $table->foreign('user_id')->references('id')->on($usertable);

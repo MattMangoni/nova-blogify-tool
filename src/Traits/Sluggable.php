@@ -38,23 +38,24 @@ trait Sluggable
      * @param Model $model
      * @return string|null
      */
-	protected static function getSluggableField( Model $model ): ?string {
-		$table  = $model->getTable();
-		$prefix = config( 'nova-blogify.table_prefix' );
+    protected static function getSluggableField(Model $model): ?string
+    {
+        $table = $model->getTable();
+        $prefix = config('nova-blogify.table_prefix');
 
-		if ( substr( $table, 0, strlen( $prefix ) ) == $prefix ) {
-			$table = substr( $table, strlen( $prefix ) );
-		}
+        if (substr($table, 0, strlen($prefix)) == $prefix) {
+            $table = substr($table, strlen($prefix));
+        }
 
-		switch ( $table ) {
-			case 'posts':
-				return 'title';
-			case 'categories':
-				return 'name';
-			default:
-				return null;
-		}
-	}
+        switch ($table) {
+            case 'posts':
+                return 'title';
+            case 'categories':
+                return 'name';
+            default:
+                return null;
+        }
+    }
 
     /**
      * Generate a unique slug.

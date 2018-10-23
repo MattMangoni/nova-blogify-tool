@@ -7,14 +7,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Tag extends Model
 {
-
-	public function getTable()
-	{
-		return config('nova-blogify.table_prefix').parent::getTable();
+    public function getTable()
+    {
+        return config('nova-blogify.table_prefix').parent::getTable();
     }
 
-
-	/**
+    /**
      * Fillable properties.
      * @var array
      */

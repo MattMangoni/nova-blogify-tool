@@ -4,7 +4,7 @@ return [
     'resources' => [
         'users' => [
             'model' => env('BLOGIFY_USER_MODEL', App\User::class),
-	        'resource' => env('BLOGIFY_USER_NOVA_RESOURCE', App\Nova\User::class)
+            'resource' => env('BLOGIFY_USER_NOVA_RESOURCE', App\Nova\User::class),
         ],
 
         'posts' => [
