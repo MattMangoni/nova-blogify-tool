@@ -4,6 +4,7 @@ return [
     'resources' => [
         'users' => [
             'model' => env('BLOGIFY_USER_MODEL', App\User::class),
+	        'resource' => env('BLOGIFY_USER_NOVA_RESOURCE', App\Nova\User::class)
         ],
 
         'posts' => [
@@ -22,6 +23,8 @@ return [
             'search' => ['id', 'name'],
         ],
     ],
+
+    'table_prefix' => env('BLOGIFY_TABLE_PREFIX', 'blogify_'),
 
     'user_model' => env('BLOGIFY_USER_MODEL', App\User::class),
 

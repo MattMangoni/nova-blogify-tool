@@ -9,7 +9,7 @@ class PostMigration
 {
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create(config('nova-blogify.table_prefix').'posts', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id')->index();
             $table->unsignedInteger('category_id')->index();
@@ -27,6 +27,6 @@ class PostMigration
 
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists(config('nova-blogify.table_prefix').'posts');
     }
 }

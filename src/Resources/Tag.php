@@ -52,8 +52,8 @@ class Tag extends Resource
             Text::make('Name')
                 ->sortable()
                 ->rules(['required', 'string', 'max:255'])
-                ->creationRules(['unique:tags,name'])
-                ->updateRules(['unique:tags,name,{{resourceId}}']),
+                ->creationRules(['unique:'.config('nova-blogify.table_prefix').'tags,name'])
+                ->updateRules(['unique:'.config('nova-blogify.table_prefix').'tags,name,{{resourceId}}']),
 
             Number::make('Count', 'tagged_count'),
 

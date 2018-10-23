@@ -10,7 +10,7 @@ class MigrationController extends BlogifyBaseController
     protected function processTask() : void
     {
         foreach ($this->migrations as $tableName => $migrationClass) {
-            if (Schema::hasTable($tableName)) {
+            if ($tableName != 'foreign' || Schema::hasTable($tableName)) {
                 $this->messages[] = BlogifyResponder::tableAlreadyCreated($tableName);
             }
 

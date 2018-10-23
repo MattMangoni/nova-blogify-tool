@@ -16,7 +16,14 @@ class Post extends Model implements HasMedia
 {
     use SoftDeletes, Sluggable, HasMediaTrait;
 
-    /**
+
+	public function getTable()
+	{
+		return config('nova-blogify.table_prefix').parent::getTable();
+    }
+
+
+	/**
      * Fillable properties.
      * @var array
      */
@@ -86,7 +93,7 @@ class Post extends Model implements HasMedia
      */
     public function tags(): BelongsToMany
     {
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsToMany(Tag::class, config('nova-blogify.table_prefix').'post_tag');
     }
 
     /**

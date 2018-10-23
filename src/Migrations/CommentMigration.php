@@ -9,7 +9,7 @@ class CommentMigration
 {
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create(config('nova-blogify.table_prefix').'comments', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('post_id');
             $table->unsignedInteger('user_id');
@@ -21,6 +21,6 @@ class CommentMigration
 
     public function down()
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists(config('nova-blogify.table_prefix').'comments');
     }
 }

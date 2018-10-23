@@ -10,7 +10,12 @@ class Comment extends Model
 {
     use SoftDeletes;
 
-    /**
+	public function getTable()
+	{
+		return config('nova-blogify.table_prefix').parent::getTable();
+    }
+
+	/**
      * Fillable properties.
      * @var array
      */
