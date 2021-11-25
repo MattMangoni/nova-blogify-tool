@@ -56,7 +56,7 @@ Route::get('/posts', function () {
     return Post::all();
 });
 
-Route::get('/posts', function () {
+Route::get('/categories', function () {
     return Category::all();
 });
 ```
