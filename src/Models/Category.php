@@ -3,8 +3,8 @@
 namespace Mattmangoni\NovaBlogifyTool\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Mattmangoni\NovaBlogifyTool\Traits\Sluggable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Mattmangoni\NovaBlogifyTool\Traits\Sluggable;
 
 class Category extends Model
 {
@@ -12,6 +12,7 @@ class Category extends Model
 
     /**
      * Model fillable fields.
+     *
      * @var array
      */
     protected $fillable = [

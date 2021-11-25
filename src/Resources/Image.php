@@ -3,11 +3,11 @@
 namespace Mattmangoni\NovaBlogifyTool\Resources;
 
 use App\Nova\Resource;
-use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Text;
 use Illuminate\Support\Facades\Storage;
+use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image as NovaImage;
+use Laravel\Nova\Fields\Text;
 use Mattmangoni\NovaBlogifyTool\Fields\ImageUpload;
 use Mattmangoni\NovaBlogifyTool\Processors\StoreImage;
 
@@ -15,18 +15,21 @@ class Image extends Resource
 {
     /**
      * The model the resource corresponds to.
+     *
      * @var string
      */
     public static $model = 'Mattmangoni\NovaBlogifyTool\Models\Image';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
+     *
      * @var string
      */
     public static $title = 'title';
 
     /**
      * The columns that should be searched.
+     *
      * @var array
      */
     public static $search = [
@@ -36,13 +39,15 @@ class Image extends Resource
 
     /**
      * Hide resource from Nova's standard menu.
+     *
      * @var bool
      */
     public static $displayInNavigation = false;
 
     /**
      * Get the fields displayed by the resource.
-     * @param  \Illuminate\Http\Request $request
+     *
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function fields(Request $request)
@@ -115,7 +120,8 @@ class Image extends Resource
 
     /**
      * Get the cards available for the request.
-     * @param  \Illuminate\Http\Request $request
+     *
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function cards(Request $request)
@@ -125,7 +131,8 @@ class Image extends Resource
 
     /**
      * Get the filters available for the resource.
-     * @param  \Illuminate\Http\Request $request
+     *
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function filters(Request $request)
@@ -135,7 +142,8 @@ class Image extends Resource
 
     /**
      * Get the lenses available for the resource.
-     * @param  \Illuminate\Http\Request $request
+     *
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function lenses(Request $request)
@@ -145,7 +153,8 @@ class Image extends Resource
 
     /**
      * Get the actions available for the resource.
-     * @param  \Illuminate\Http\Request $request
+     *
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function actions(Request $request)

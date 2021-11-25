@@ -4,15 +4,16 @@ namespace Mattmangoni\NovaBlogifyTool;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use Mattmangoni\NovaBlogifyTool\Models\Image;
 use Mattmangoni\NovaBlogifyTool\Bootstrap\Blogify;
-use Mattmangoni\NovaBlogifyTool\Observers\ImageObserver;
 use Mattmangoni\NovaBlogifyTool\Http\Middleware\Authorize;
+use Mattmangoni\NovaBlogifyTool\Models\Image;
+use Mattmangoni\NovaBlogifyTool\Observers\ImageObserver;
 
 class ToolServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any application services.
+     *
      * @return void
      */
     public function boot()
@@ -34,6 +35,7 @@ class ToolServiceProvider extends ServiceProvider
 
     /**
      * Register the tool's routes.
+     *
      * @return void
      */
     protected function routes()
@@ -49,6 +51,7 @@ class ToolServiceProvider extends ServiceProvider
 
     /**
      * Register any application services.
+     *
      * @return void
      */
     public function register()
