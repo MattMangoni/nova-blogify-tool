@@ -35,7 +35,8 @@ trait Sluggable
 
     /**
      * Fetch sluggable field.
-     * @param Model $model
+     *
+     * @param  Model  $model
      * @return string|null
      */
     protected static function getSluggableField(Model $model): ?string
@@ -54,8 +55,9 @@ trait Sluggable
 
     /**
      * Generate a unique slug.
-     * @param string $fieldValue
-     * @param int|null $oldId
+     *
+     * @param  string  $fieldValue
+     * @param  int|null  $oldId
      * @return string
      */
     protected static function generateUniqueSlug(string $fieldValue, int $oldId = null): string
@@ -80,7 +82,8 @@ trait Sluggable
     /**
      * Additional check for "updating" event.
      * Solves a problem when updating without changing sluggable field.
-     * @param int|null $oldId
+     *
+     * @param  int|null  $oldId
      * @return string
      */
     protected static function getAdditionalQueryString($oldId): string

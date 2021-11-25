@@ -9,7 +9,8 @@ class ImageObserver
 {
     /**
      * Handle the image "deleting" event.
-     * @param Image $image
+     *
+     * @param  Image  $image
      * @return void
      */
     public function deleting(Image $image)

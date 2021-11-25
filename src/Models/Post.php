@@ -3,11 +3,11 @@
 namespace Mattmangoni\NovaBlogifyTool\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Mattmangoni\NovaBlogifyTool\Traits\Sluggable;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Mattmangoni\NovaBlogifyTool\Traits\Sluggable;
 
 class Post extends Model
 {
@@ -15,6 +15,7 @@ class Post extends Model
 
     /**
      * Fillable properties.
+     *
      * @var array
      */
     protected $fillable = [
@@ -30,12 +31,14 @@ class Post extends Model
 
     /**
      * Appended fields.
+     *
      * @var array
      */
     protected $appends = ['published'];
 
     /**
      * The attributes that should be cast to native types.
+     *
      * @var array
      */
     protected $casts = [
@@ -45,6 +48,7 @@ class Post extends Model
 
     /**
      * The attributes that should be mutated to dates.
+     *
      * @var array
      */
     protected $dates = [
@@ -56,6 +60,7 @@ class Post extends Model
 
     /**
      * Published mutator.
+     *
      * @return bool
      */
     public function getPublishedAttribute()

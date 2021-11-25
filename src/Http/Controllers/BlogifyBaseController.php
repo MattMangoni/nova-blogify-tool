@@ -24,7 +24,7 @@ class BlogifyBaseController
     /**
      * Instantiate controller.
      *
-     * @param Migrator $migrator
+     * @param  Migrator  $migrator
      */
     public function __construct(Migrator $migrator)
     {
@@ -36,7 +36,7 @@ class BlogifyBaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function execute() : JsonResponse
+    public function execute(): JsonResponse
     {
         $this->processTask();
 

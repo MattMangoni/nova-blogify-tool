@@ -10,7 +10,8 @@ class NewPosts extends Value
 {
     /**
      * Calculate the value of the metric.
-     * @param  \Illuminate\Http\Request $request
+     *
+     * @param  \Illuminate\Http\Request  $request
      * @return mixed
      */
     public function calculate(Request $request)
@@ -20,6 +21,7 @@ class NewPosts extends Value
 
     /**
      * Get the ranges available for the metric.
+     *
      * @return array
      */
     public function ranges()
@@ -36,7 +38,8 @@ class NewPosts extends Value
 
     /**
      * Determine for how many minutes the metric should be cached.
-     * @return  \DateTimeInterface|\DateInterval|float|int
+     *
+     * @return \DateTimeInterface|\DateInterval|float|int
      */
     public function cacheFor()
     {
@@ -45,6 +48,7 @@ class NewPosts extends Value
 
     /**
      * Get the URI key for the metric.
+     *
      * @return string
      */
     public function uriKey()

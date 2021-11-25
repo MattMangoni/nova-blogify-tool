@@ -3,35 +3,39 @@
 namespace Mattmangoni\NovaBlogifyTool\Resources;
 
 use App\Nova\Resource;
-use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Number;
-use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\BelongsToMany;
+use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Markdown;
+use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Text;
 
 class Tag extends Resource
 {
     /**
      * The model the resource corresponds to.
+     *
      * @var string
      */
     public static $model = 'Mattmangoni\NovaBlogifyTool\Models\Tag';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
+     *
      * @var string
      */
     public static $title = 'name';
 
     /**
      * Hide resource from Nova's standard menu.
+     *
      * @var bool
      */
     public static $displayInNavigation = false;
 
     /**
      * Get the searchable columns for the resource.
+     *
      * @return array
      */
     public static function searchableColumns()
@@ -41,7 +45,8 @@ class Tag extends Resource
 
     /**
      * Get the fields displayed by the resource.
-     * @param  \Illuminate\Http\Request $request
+     *
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function fields(Request $request)
@@ -65,7 +70,8 @@ class Tag extends Resource
 
     /**
      * Get the cards available for the request.
-     * @param  \Illuminate\Http\Request $request
+     *
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function cards(Request $request)
@@ -75,7 +81,8 @@ class Tag extends Resource
 
     /**
      * Get the filters available for the resource.
-     * @param  \Illuminate\Http\Request $request
+     *
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function filters(Request $request)
@@ -85,7 +92,8 @@ class Tag extends Resource
 
     /**
      * Get the lenses available for the resource.
-     * @param  \Illuminate\Http\Request $request
+     *
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function lenses(Request $request)
@@ -95,7 +103,8 @@ class Tag extends Resource
 
     /**
      * Get the actions available for the resource.
-     * @param  \Illuminate\Http\Request $request
+     *
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function actions(Request $request)

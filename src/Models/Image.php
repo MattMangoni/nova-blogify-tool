@@ -8,6 +8,7 @@ class Image extends Model
 {
     /**
      * Fillable properties.
+     *
      * @var array
      */
     protected $fillable = [
@@ -19,6 +20,7 @@ class Image extends Model
 
     /**
      * Get image's link.
+     *
      * @return string
      */
     public function getLinkAttribute()
@@ -28,6 +30,7 @@ class Image extends Model
 
     /**
      * Get image thumbnail's link.
+     *
      * @return string
      */
     public function getThumbnailLinkAttribute()

@@ -8,7 +8,7 @@ use Mattmangoni\NovaBlogifyTool\BlogifyResponder;
 
 class UninstallController extends BlogifyBaseController
 {
-    protected function processTask() : void
+    protected function processTask(): void
     {
         foreach ($this->migrations as $tableName => $migrationClass) {
             if (! Schema::hasTable($tableName)) {
